@@ -63,6 +63,113 @@ module.exports = {
       'type-specs-counter': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '400' }],
       'type-specs-tag': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '400' }],
       'type-specs-source-code': ['1.125rem', { lineHeight: '1.625rem', letterSpacing: '0', fontWeight: '400' }]
+    },
+    borderRadius: {
+      4: '4px',
+      8: '8px',
+      16: '16px',
+      24: '24px',
+      32: '32px'
+    },
+    color: {
+      white: '#FFFFFF',
+      black: '#000000',
+      neutral: {
+        50: '#F7F8FA',
+        100: '#F1F3F8',
+        200: '#E1E4EA',
+        300: '#CDD2DC',
+        400: '#BAC0CC',
+        500: '#9CA6B8',
+        600: '#8893AA',
+        700: '#64718B',
+        800: '#475164',
+        900: '#2B363C'
+      },
+      primary: {
+        50: '#FAFCFF',
+        100: '#F2F6FF',
+        200: '#E5EEFF',
+        300: '#BBD1FD',
+        400: '#5F93FC',
+        500: '#1A65FA',
+        600: '#034AD8',
+        700: '#0338A2',
+        800: '#002B82',
+        900: '#021C51'
+      },
+      secondary: {
+        50: '#FAFDFF',
+        100: '#F2F8FC',
+        200: '#E6EFF5',
+        300: '#DAE6F0',
+        400: '#D3E1EB',
+        500: '#C8D7E3',
+        600: '#BACDDB',
+        700: '#7F9EB5',
+        800: '#5D819C',
+        900: '#416682'
+      },
+      accent: {
+        50: '#F5FBFF',
+        100: '#EBF6FF',
+        200: '#E3F4FF',
+        300: '#CCEAFF',
+        400: '#A0D8FE',
+        500: '#A0D8FE',
+        600: '#1993E3',
+        700: '#1682CA',
+        800: '#12669E',
+        900: '#0D4C75'
+      },
+      informative: {
+        50: '#E5F6FF',
+        100: '#E5F6FF',
+        200: '#A5DEFF',
+        300: '#77CEFF',
+        400: '#49BCFF',
+        500: '#0079BF',
+        600: '#00598C',
+        700: '#0B486B',
+        800: '#083752',
+        900: '#00121C'
+      },
+      success: {
+        50: '#E5FFF7',
+        100: '#C2F2E2',
+        200: '#7ACCB1',
+        300: '#36B289',
+        400: '#1F9970',
+        500: '#008558',
+        600: '#00724C',
+        700: '#005539',
+        800: '#013926',
+        900: '#001C13'
+      },
+      alert: {
+        50: '#FFF9E5',
+        100: '#FFF2CC',
+        200: '#FFE699',
+        300: '#FFDF80',
+        400: '#FFD966',
+        500: '#FBCB3C',
+        600: '#FBBB3C',
+        700: '#F2A222',
+        800: '#B06112',
+        900: '#80460D'
+      },
+      danger: {
+        50: '#FEF1F2',
+        100: '#FEE1E3',
+        200: '#FEC8CD',
+        300: '#FCA6AD',
+        400: '#F8727D',
+        500: '#DE2D3B',
+        600: '#D12432',
+        700: '#C41826',
+        800: '#B20917',
+        900: '#86131D'
+      }
     }
   },
   plugins: []
