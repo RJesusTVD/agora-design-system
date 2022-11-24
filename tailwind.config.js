@@ -2,6 +2,14 @@ module.exports = {
   content: ['./pages/**/*.{ts,tsx}', './src/**/*.{js,jsx,ts,tsx,mdx}'],
   theme: {
     extend: {},
+    screens: {
+      'xs': '0px',
+      'sm': '576px',
+      'md': '768px',
+      'lg': '992px',
+      'xl': '1200px',
+      '2xl': '1400px'
+    },
     fontFamily: {
       sans: ['Noto Sans', 'sans-serif'],
       monospace: ['Source Code Pro', 'monospace']
