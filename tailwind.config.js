@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['Noto Sans', 'sans-serif']
+      sans: ['Noto Sans', 'sans-serif'],
+      monospace: ['Source Code Pro', 'monospace']
     },
     fontSize: {
       'base': '16px',
@@ -49,7 +50,19 @@ module.exports = {
       'interaction-button-s': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '500' }],
       'interaction-button-tab': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '500' }],
       'interaction-input-label': ['1rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '500' }],
-      'interaction-input-text': ['1rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '500' }]
+      'interaction-input-text': ['1rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '500' }],
+      'interaction-menu-main': ['0.875rem', { lineHeight: '1.5rem', letterSpacing: '0', fontWeight: '400' }],
+      'interaction-menu-secondary': ['0.938rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '400' }],
+      'interaction-side-nav': ['1rem', { lineHeight: '1.75rem', letterSpacing: '0', fontWeight: '600' }],
+      'interaction-side-nav-strong': ['1rem', { lineHeight: '1.75rem', letterSpacing: '0', fontWeight: '700' }],
+      'interaction-breadcrumb': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '400' }],
+      'type-specs-table-header': ['0.875rem', { lineHeight: '1rem', letterSpacing: '0', fontWeight: '600' }],
+      'type-specs-table-cell': ['0.875rem', { lineHeight: '1rem', letterSpacing: '0', fontWeight: '400' }],
+      'type-specs-table-cell-strong': ['0.875rem', { lineHeight: '1rem', letterSpacing: '0', fontWeight: '700' }],
+      'type-specs-caption': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '400' }],
+      'type-specs-counter': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '400' }],
+      'type-specs-tag': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '400' }],
+      'type-specs-source-code': ['1.125rem', { lineHeight: '1.625rem', letterSpacing: '0', fontWeight: '400' }]
     }
   },
   plugins: []
