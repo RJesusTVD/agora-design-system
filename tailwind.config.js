@@ -79,7 +79,8 @@ module.exports = {
       24: '24px',
       32: '32px'
     },
-    color: {
+    colors: {
+      backdrop: 'rgba(5, 26, 61, 0.75)',
       white: '#FFFFFF',
       black: '#000000',
       neutral: {
