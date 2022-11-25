@@ -3,7 +3,7 @@ import logo from '../src/assets/logo_ticapp.png';
 
 export default create({
   base: 'light',
-  brandTitle: 'AMA Design System',
+  brandTitle: 'Ágora Design System',
   brandUrl: 'https://github.com/ticapp/portal-unico__building-blocks__storybook-react',
   brandImage: logo,
   brandTarget: '_self',
