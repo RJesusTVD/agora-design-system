@@ -199,6 +199,20 @@ module.exports = {
       120: '120px',
       128: '128px',
       256: '256px'
+    },
+    boxShadow: {
+      'top-low': '0px -2px 8px 1px rgba(0, 0, 0, 0.07)',
+      'top-medium': '0px -6px 12px 2px rgba(0, 0, 0, 0.07)',
+      'top-high': '0px -12px 16px 4px rgba(0, 0, 0, 0.07)',
+      'top-higher': '0px -20px 30px 10px rgba(0, 0, 0, 0.07)',
+      'center-low': '0px 0px 8px 1px rgba(0, 0, 0, 0.07)',
+      'center-medium': '0px 0px 12px 2px rgba(0, 0, 0, 0.07)',
+      'center-high': '0px 0px 16px 4px rgba(0, 0, 0, 0.07)',
+      'center-higher': '0px 0px 30px 10px rgba(0, 0, 0, 0.07)',
+      'bottom-low': '0px 2px 8px 1px rgba(0, 0, 0, 0.07)',
+      'bottom-medium': '0px 6px 12px 2px rgba(0, 0, 0, 0.07)',
+      'bottom-high': '0px 12px 16px 4px rgba(0, 0, 0, 0.07)',
+      'bottom-higher': '0px 20px 30px 10px rgba(0, 0, 0, 0.07)'
     }
   },
   plugins: []
