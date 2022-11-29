@@ -3,3 +3,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  p,
+  a,
+  li,
+  span,
+  em,
+  input,
+  select,
+  i,
+  optgroup,
+  option,
+  textarea,
+  div,
+  label,
+  button {
+    @apply text-text-m;
+  }
+}
