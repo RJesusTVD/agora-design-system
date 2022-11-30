@@ -11,7 +11,7 @@ export const Size: Story<IconProps> = ({ icon }: IconProps) => {
   const dimensions = ['xs', 'sm', 'default', 'md', 'lg', 'xl'] as const;
 
   return (
-    <div style={{ backgroundColor: '#ebebeb' }}>
+    <div className="bg-neutral-100">
       {dimensions.map((size) => (
         <Icon className="p-1" key={size} size={size} icon={icon || 'agora-line-user'} ariaHidden />
       ))}
@@ -49,7 +49,7 @@ ExternalImage.argTypes = {
 
 export const IconList: Story<IconProps> = ({ size }: IconProps) => {
   return (
-    <div style={{ backgroundColor: '#ebebeb' }} className="grid md:grid-cols-3">
+    <div className="grid md:grid-cols-3 bg-neutral-100">
       {allIcons.map((icon) => (
         <div className="flex items-center" key={icon}>
           <Icon icon={icon} size={size || 'md'} ariaHidden />
