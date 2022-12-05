@@ -197,13 +197,19 @@ const iconList: Record<string, string> = {
   'agora-line-bookmark-card': './Line/line-bookmark-card',
   'agora-solid-bookmark-card': './Solid/solid-bookmark-card',
   'agora-illustrate-bookmark-card': './Illustrate/illustrate-bookmark-card',
+  'agora-line-external-link': './Line/line-external-link',
+  'agora-solid-external-link': './Solid/solid-external-link',
+  'agora-illustrate-external-link': './Illustrate/illustrate-external-link',
+  'agora-line-map': './Line/line-map',
+  'agora-solid-map': './Solid/solid-map',
+  'agora-illustrate-map': './Illustrate/illustrate-map',
   'agora-social-youtube': './Social/youtube',
   'agora-social-twitter': './Social/twitter',
   'agora-social-instagram': './Social/instagram',
   'agora-social-facebook': './Social/facebook',
   'agora-social-linkedin': './Social/linkedin',
   'agora-other-drag-dots': './Other/drag-dots',
-  'agora-otherarrow-down-anchor': './Other/arrow-down-anchor'
+  'agora-other-arrow-down-anchor': './Other/arrow-down-anchor'
 };
 
 export type IconName = keyof typeof iconList;
