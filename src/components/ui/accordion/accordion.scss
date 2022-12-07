@@ -1,7 +1,8 @@
-/* styles.css */
-.AccordionChevron {
-  transition: transform 300ms;
-}
-.AccordionTrigger[data-state='open'] > .AccordionChevron {
-  transform: rotate(180deg);
+.agora-accordion {
+  .accordion-chevron {
+    transition: transform 300ms;
+  }
+  .accordion-trigger[data-state='open'] > .accordion-chevron {
+    transform: rotate(180deg);
+  }
 }

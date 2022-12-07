@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import logo from '../src/assets/logo_ticapp.png';
+import logo from '../src/assets/Ágora.png';
 
 export default create({
   base: 'light',
