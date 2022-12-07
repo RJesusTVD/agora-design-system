@@ -2,43 +2,38 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Accordion/Accordion Docs" />
 
-<h1 className="mb-32">
+<h1 className="mb-32 text-headings-lg-strong">
   <u>Accordion</u>
 </h1>
 
-<h2>Description </h2>
+<h2 className="text-headings-l-strong mb-8">Description </h2>
 <p className="fs-16">Accordion allows to expand/collapse info on a block card.</p>
 <p className="fs-16">Check all props available in each example on Docs tab.</p>
 
-<h2>Component usage</h2>
+<h2 className="text-headings-l-strong my-8">Component usage</h2>
 
 ```tsx
-import { Accordion } from '@ama/react-design-system';
+import { Accordion } from '@ama/agora-design-system';
 
 const args = {
-  accordionInfo: [
+  accordionItems: [
     {
-      title: 'Como são atribuídos?',
-      children: (
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Senectus quis fringilla risus natoque fusce malesuada diam sagittis. Urna
-          euismod auctor lectus et scelerisque nisl ornare urna, porttitor. A cras dictum semper condimentum volutpat mauris. Aliquam
-          ultricies elementum vitae ultricies et sit orci fusce.
-        </div>
-      )
-    },
-    {
-      title: 'Como são atribuídos?',
-      children: (
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Senectus quis fringilla risus natoque fusce malesuada diam sagittis. Urna
-          euismod auctor lectus et scelerisque nisl ornare urna, porttitor. A cras dictum semper condimentum volutpat mauris. Aliquam
-          ultricies elementum vitae ultricies et sit orci fusce.
-        </div>
-      )
+      headerTitle: (
+        <>
+          <Icon icon="agora-illustrate-file" ariaHidden />
+          <span className="text-interaction-button-l ml-16">Title lorem ipsum</span>
+        </>
+      ),
+      content:
+        'Description egestas sit dictum elementum, turpis morbi amet mauris nunc vitae nisl sapien ut in sed etiam massa at eu neque tellus semper vel ultrices ipsum vel at semper dignissim vehicula.',
+      headerTitleClassName: 'bg-white hover:bg-primary-100',
+      contentClassName: 'text-text-m',
+      accordionItemClassName: 'border-b border-neutral-300'
     }
-  ]
-};
+  ] as AccordionItems[],
+  headerTag: 'h3',
+  type: 'single'
+} as AccordionProps & AccordionTagsProps & AccordionItems;
 
 <Accordion {...args} />;
 ```

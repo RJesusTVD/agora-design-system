@@ -1,0 +1,8 @@
+.agora-accordion {
+  .accordion-chevron {
+    transition: transform 300ms;
+  }
+  .accordion-trigger[data-state='open'] > .accordion-chevron {
+    transform: rotate(180deg);
+  }
+}
