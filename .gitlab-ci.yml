@@ -1,0 +1,92 @@
+stages:
+  - build-info
+  - code-quality
+  - build
+  - publish
+
+cache:
+  paths:
+    - node_modules/
+  key: '$CI_BUILD_REF_NAME'
+
+variables:
+  NEXUS_PATH: '$NEXUS_GENERAL_REPOSITORY_URL/npm-general/'
+  METADATA_PATH: '${CI_PROJECT_DIR}/tmp'
+  STORYBOOK_OUTPUT_PATH: '${CI_PROJECT_DIR}/storybook-static'
+
+build-metadata:
+  stage: build-info
+  image: docker:20.10.13
+  artifacts:
+    paths:
+      - $METADATA_PATH
+  script:
+    - mkdir $METADATA_PATH
+    - cat package.json | grep -e '\"version\"' | grep -oe '\d*\.\d*\.\d*' > $METADATA_PATH/version.ver
+
+lint:
+  stage: code-quality
+  image: node:16.15.1-alpine3.15
+  script:
+    - npm install
+    - npm run lint
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+sonarqube-check:
+  stage: code-quality
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: ['']
+  variables:
+    SONAR_USER_HOME: '${CI_PROJECT_DIR}/.sonar' # Defines the location of the analysis task cache
+    GIT_DEPTH: '0' # Tells git to fetch all the branches of the project, required by the analysis task
+  script:
+    - sonar-scanner -Dsonar.qualitygate.wait=true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+build-storybook:
+  stage: build
+  image: node:16.15.1-alpine3.15
+  artifacts:
+    paths:
+      - $METADATA_PATH
+      - $STORYBOOK_OUTPUT_PATH
+  script:
+    - npm install
+    - npm run build-storybook
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "master"'
+
+publish-storybook-image-nexus-registry:
+  image: docker:20.10.13
+  stage: publish
+  script:
+    - docker login -u $NEXUS_REGISTRY_USER -p $NEXUS_REGISTRY_PASSWORD $NEXUS_REGISTRY_DEPLOY_URL
+    - docker build -f Dockerfile -t $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/version.ver) .
+    - docker push $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/version.ver)
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "master"'
+
+publish-storybook-image-docker-hub:
+  image: docker:20.10.13
+  stage: publish
+  script:
+    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD $DOCKER_HUB_URL
+    - docker build -f Dockerfile -t ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/version.ver) .
+    - docker push ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/version.ver)
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+
+publish-library-npm-nexus:
+  stage: publish
+  image: node:14.16.1-alpine3.13
+  script:
+    - npm install
+    - npm run build
+    - echo "@ama:registry=${NEXUS_PATH}" >> .npmrc
+    - echo "_auth=${NEXUS_REGISTRY_CREDENTIALS_BASE_64}" >> .npmrc
+    - npm publish
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'

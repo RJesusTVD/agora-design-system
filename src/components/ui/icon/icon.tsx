@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { FC, SVGProps, useEffect, useState } from 'react';
+import { FC, SVGProps, useEffect, useState } from 'react';
 import { allIcons, IconName, isBundledIcon, loadIcon } from './assets';
 import { EmptyIcon } from './empty-icon';
 import './icon.scss';

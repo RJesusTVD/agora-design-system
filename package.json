@@ -1,16 +1,25 @@
 {
-  "name": "agora-design-system",
+  "name": "@ama/agora-design-system",
+  "description": "Ágora Design system",
   "version": "0.1.0",
-  "private": true,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://ticappsonar.northeurope.cloudapp.azure.com/nexus/repository/npm-general"
+  },
+  "main": "dist/cjs/components/index.js",
+  "module": "dist/esm/components/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint ./**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix ./**/*.{js,jsx,ts,tsx,json}",
-    "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,scss,mdx,md,json} --config ./.prettierrc"
+    "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,scss,mdx,md,json} --config ./.prettierrc",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "build": "npm run build:esm && npm run build:cjs"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -75,5 +84,11 @@
     "trim-newlines": "^4.0.2",
     "trim": "^1.0.1",
     "enhanced-resolve": "5.10.0"
-  }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "next": "13.0.4"
+  },
+  "author": "TicApp",
+  "license": "MIT"
 }
