@@ -6,8 +6,8 @@
     "access": "public",
     "registry": "https://ticappsonar.northeurope.cloudapp.azure.com/nexus/repository/npm-general"
   },
-  "main": "dist/cjs/components/index.js",
-  "module": "dist/esm/components/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
     "dist"
   ],
@@ -61,7 +61,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.7",
-    "next": "13.0.4",
+    "next": "^13.0.4",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.1",
     "react": "18.2.0",
@@ -87,7 +87,7 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "next": "13.0.4"
+    "next": "^13.0.4"
   },
   "author": "TicApp",
   "license": "MIT"

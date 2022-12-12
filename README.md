@@ -37,7 +37,7 @@ To keep code and commits easy to read a custom config was made to format files t
 
 ```sh
   > npm run lint
-  >npm run lint-fix
+  > npm run lint-fix
 
 ```
 
