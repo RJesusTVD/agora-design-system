@@ -1,3 +1,4 @@
+import React from 'react';
 import * as AccordionRadixUi from '@radix-ui/react-accordion';
 import classNames from 'classnames';
 import { Icon } from '../icon';

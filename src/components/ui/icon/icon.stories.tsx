@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { allIcons } from './assets';
 import { Icon, IconProps } from './icon';

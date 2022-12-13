@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["ES5", "ES2015", "ES2016", "DOM", "ESNext"],
     "types": ["node"],
     "module": "esnext",
