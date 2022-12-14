@@ -80,6 +80,7 @@ module.exports = {
       32: '32px'
     },
     colors: {
+      transparent:"transparent",
       backdrop: 'rgba(5, 26, 61, 0.75)',
       white: '#FFFFFF',
       black: '#000000',
