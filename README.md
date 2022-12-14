@@ -43,7 +43,7 @@ To keep code and commits easy to read a custom config was made to format files t
 
 ## Components
 
-Each component is created under ``components/ui`` folder, and export like the existing examples.
+Each component is created under `components/ui` folder, and export like the existing examples.
 
 # Tailwind.config.js file
 
@@ -53,4 +53,3 @@ File support all configurations to scss
 
 - All code is analyzed by Sonnar
 - The main objective is the generation of a design system library that is published on the Nexus of AMA
-

@@ -1,4 +1,4 @@
-import * as React from 'react';
+ import React from 'react';
 
 export const component = (props: React.SVGProps<SVGSVGElement> | any) => {
   const newProps = { ...props };
