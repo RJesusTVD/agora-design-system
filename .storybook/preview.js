@@ -1,5 +1,5 @@
 import dsTheme from './theme';
-import '../styles/globals.scss';
+import '../src/styles/globals.scss';
 
 export const parameters = {
   layout: 'fullscreen',

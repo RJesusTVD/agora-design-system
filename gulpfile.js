@@ -22,3 +22,11 @@ gulp.task('minify-css', () => {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/css'));
 });
+
+gulp.task('components', () => {
+  return gulp.src(['src/components/**/*.scss']).pipe(gulp.dest('dist/cjs/components')).pipe(gulp.dest('dist/esm/components')).pipe(touch());
+});
+
+gulp.task('scss', () => {
+  return gulp.src(['src/styles/**']).pipe(gulp.dest('dist/cjs/styles')).pipe(gulp.dest('dist/esm/styles')).pipe(touch());
+});
