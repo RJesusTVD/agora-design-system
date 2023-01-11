@@ -12,7 +12,7 @@
 - Node - version ^16
 
 ## Useful Links
-- StoryBook Dev - <https://dev-apigw-pdun.northeurope.cloudapp.azure.com:8180/>
+- StoryBook Dev - <https://dev-portal-unico.northeurope.cloudapp.azure.com:8180/>
 - Tailwind CSS Cheat Sheet - <https://tailwindcomponents.com/cheatsheet/>
 - Sonnar - <https://ticappsonar.northeurope.cloudapp.azure.com/sonarqube/dashboard?id=portal-unico-storybook-agora>
 - Nexus - <https://ticappsonar.northeurope.cloudapp.azure.com/nexus/#browse/browse:npm-general:%40ama%2Fagora-design-system>
