@@ -4,7 +4,7 @@ import { allIcons } from './assets';
 import { Icon, IconProps } from './icon';
 
 export default {
-  title: 'Components/Icon'
+  title: 'Components/Atoms/Icon'
 } as ComponentMeta<typeof Icon>;
 
 export const Size: Story<IconProps> = ({ icon }: IconProps) => {
