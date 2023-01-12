@@ -1,7 +1,7 @@
 import React from 'react';
 import * as AccordionRadixUi from '@radix-ui/react-accordion';
 import classNames from 'classnames';
-import { Icon } from '../icon';
+import { Icon } from '../../atoms/icon';
 import './accordion.scss';
 
 export interface AccordionItems {
