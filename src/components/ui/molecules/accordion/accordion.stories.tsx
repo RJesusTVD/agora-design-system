@@ -1,10 +1,10 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { Icon } from '../icon';
+import { Icon } from '../../atoms/icon';
 import { Accordion, AccordionItems, AccordionProps, AccordionTagsProps } from './accordion';
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Components/Molecules/Accordion',
   component: Accordion
 } as ComponentMeta<typeof Accordion>;
 

@@ -1,2 +1,2 @@
-export * from './accordion';
-export * from './icon';
+export * from './molecules/accordion';
+export * from './atoms/icon';
