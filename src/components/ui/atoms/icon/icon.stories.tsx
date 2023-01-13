@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Icon>;
 
 export const Size: Story<IconProps> = ({ icon }: IconProps) => {
-  const dimensions = ['xs', 'sm', 'default', 'md', 'lg', 'xl'] as const;
+  const dimensions = ['sm', 'default', 'md', 'lg', 'xl'] as const;
 
   return (
     <div className="bg-neutral-100">
@@ -42,7 +42,7 @@ ExternalImage.argTypes = {
     description: 'Icon size to be used',
     control: {
       type: 'inline-radio',
-      options: ['default', 'xl', 'lg', 'md', 'sm', 'xs']
+      options: ['default', 'xl', 'lg', 'md', 'sm']
     }
   }
 };
@@ -65,7 +65,7 @@ IconList.argTypes = {
     description: 'Icon size to be used',
     control: {
       type: 'inline-radio',
-      options: ['default', 'xl', 'lg', 'md', 'sm', 'xs']
+      options: ['default', 'xl', 'lg', 'md', 'sm']
     }
   }
 };
