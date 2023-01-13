@@ -203,6 +203,13 @@ const iconList: Record<string, string> = {
   'agora-line-map': './Line/line-map',
   'agora-solid-map': './Solid/solid-map',
   'agora-illustrate-map': './Illustrate/illustrate-map',
+  'agora-line-list': './Line/line-list',
+  'agora-solid-list': './Solid/solid-list',
+  'agora-illustrate-list': './Illustrate/illustrate-list',
+  'agora-line-target': './Line/line-target',
+  'agora-solid-target': './Solid/solid-target',
+  'agora-illustrate-target': './Illustrate/illustrate-target',
+  // Others
   'agora-social-youtube': './Social/youtube',
   'agora-social-twitter': './Social/twitter',
   'agora-social-instagram': './Social/instagram',
