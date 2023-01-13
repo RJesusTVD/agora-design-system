@@ -44,8 +44,8 @@ export const clearIconCache = (iconName?: IconName) => {
 export interface IconProps extends SVGProps<SVGSVGElement> {
   /** Additional classes to use in icon component */
   className?: string;
-  /** Predefined icon dimensions. Possible values: 'xl' | 'lg' | '' | 'sm' | 'xs'| 'xxs'  */
-  size?: 'default' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
+  /** Predefined icon dimensions. Possible values: 'xl' | 'lg' | '' | 'sm' */
+  size?: 'default' | 'xl' | 'lg' | 'md' | 'sm';
   /** Icon name to be used */
   icon: string;
   /** To use padding in icon container */
