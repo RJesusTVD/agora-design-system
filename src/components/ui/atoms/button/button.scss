@@ -136,8 +136,8 @@
   &-default {
     @apply px-16;
 
-    span.children-wrapper{
-       @apply text-interaction-button-m; 
+    span.children-wrapper {
+      @apply text-interaction-button-m;
     }
 
     min-height: 60px;
@@ -157,7 +157,7 @@
   &-small {
     @apply px-16;
 
-    span.children-wrapper{
+    span.children-wrapper {
       @apply text-interaction-button-s;
     }
 
@@ -193,18 +193,13 @@
   }
   // # end animations
 
-
   &-block {
     @apply w-full justify-center;
   }
 
-
   &-with-icon {
-
-    
-
     &--leading {
-      span.children-wrapper{
+      span.children-wrapper {
         text-align: left !important;
       }
       @apply flex-row;
@@ -215,8 +210,7 @@
     }
 
     &--trailing {
-      
-      span.children-wrapper{
+      span.children-wrapper {
         text-align: left !important;
       }
 
@@ -240,10 +234,11 @@
     }
     &--secondary {
       @include dyeButton(
-        'text-dark bg-secondary-200', 
-        'text-dark bg-secondary-300', 
-        'text-dark bg-secondary-500', 
-        'text-dark bg-secondary-200');
+        'text-dark bg-secondary-200',
+        'text-dark bg-secondary-300',
+        'text-dark bg-secondary-500',
+        'text-dark bg-secondary-200'
+      );
       @include dyeIcon('stroke-black', 'fill-black', 'fill-black');
     }
     &--success {
@@ -256,20 +251,11 @@
       @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
     }
     &--warning {
-      @include dyeButton(
-        'bg-alert-500 text-dark', 
-        'bg-alert-600 text-dark', 
-        'bg-alert-700 text-dark', 
-        'bg-alert-500 text-dark'
-        );
+      @include dyeButton('bg-alert-500 text-dark', 'bg-alert-600 text-dark', 'bg-alert-700 text-dark', 'bg-alert-500 text-dark');
       @include dyeIcon('stroke-neutral-900', 'fill-neutral-900', 'fill-neutral-900');
     }
     &--danger {
-      @include dyeButton(
-        'bg-danger-600 text-white', 
-        'bg-danger-700 text-white', 
-        'bg-danger-800 text-white', 
-        'bg-danger-600 text-white');
+      @include dyeButton('bg-danger-600 text-white', 'bg-danger-700 text-white', 'bg-danger-800 text-white', 'bg-danger-600 text-white');
       @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
     }
     &--neutral {
@@ -282,12 +268,7 @@
       @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
     }
     &--white {
-      @include dyeButton(
-        'bg-white text-dark', 
-        'bg-neutral-100 text-dark', 
-        'bg-neutral-200 text-dark', 
-        'bg-white text-dark'
-        );
+      @include dyeButton('bg-white text-dark', 'bg-neutral-100 text-dark', 'bg-neutral-200 text-dark', 'bg-white text-dark');
       @include dyeIcon('stroke-neutral-900', 'fill-neutral-900', 'fill-neutral-900');
     }
   }
@@ -301,7 +282,7 @@
         'border-neutral-300 text-primary-600 border-2'
       );
       @include dyeIcon('stroke-primary-500', 'fill-primary-500', 'fill-primary-800');
-    } 
+    }
     &--success {
       @include dyeButton(
         'border-neutral-300 text-success-600 border-2',
@@ -351,22 +332,12 @@
 
   &-link {
     &--primary {
-      @include dyeButton(
-        'text-primary-600', 
-        'text-primary-600', 
-        'text-primary-700', 
-        'text-primary-600'
-        );
+      @include dyeButton('text-primary-600', 'text-primary-600', 'text-primary-700', 'text-primary-600');
       @include dyeLinkUnderline('bg-primary-600');
       @include dyeIcon('stroke-primary-500', 'fill-primary-700', 'fill-primary-500');
     }
     &--success {
-      @include dyeButton(
-        'text-success-600', 
-        'text-success-600', 
-        'text-success-700', 
-        'text-success-600'
-        );
+      @include dyeButton('text-success-600', 'text-success-600', 'text-success-700', 'text-success-600');
       @include dyeLinkUnderline('bg-success-600');
       @include dyeIcon('stroke-success-600', 'fill-success-600', 'fill-success-800');
     }

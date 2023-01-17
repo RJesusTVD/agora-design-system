@@ -5,61 +5,63 @@ import { Meta } from '@storybook/addon-docs';
 <h1 className="mb-32 text-headings-lg-strong">
   <u>Button</u>
   <h2 className="text-headings-l-strong mb-8">Description </h2>
-  <p className="fs-16">Defines an element activated by a user with a mouse, keyboard, finger, voice command, or other assistive technology. Once activated, it then performs an action, such as submitting a form or opening a dialog.</p>
- </h1>
+  <p className="fs-16">
+    Defines an element activated by a user with a mouse, keyboard, finger, voice command, or other assistive technology. Once activated, it
+    then performs an action, such as submitting a form or opening a dialog.
+  </p>
+</h1>
 
- <h2 className="text-headings-l-strong my-8">Component usage.</h2>
- <h2 className="text-headings-l-strong my-8">Button Solid.</h2>
-
-```tsx
-import { Button } from '@ama/agora-design-system';
- 
- <Button
-    appearence="solid" 
-    icon="agora-line-arrow-right-circle"
-    iconPosition="trailing"
-    iconAltText="Alternative Text"  
-    size="default"
-    variant="primary"
-  >
-    Button Text
-</Button>
- 
-```
-
- <h2 className="text-headings-l-strong my-8">Button Outline.</h2>
+{' '}
+<h2 className="text-headings-l-strong my-8">Component usage.</h2>
+<h2 className="text-headings-l-strong my-8">Button Solid.</h2>
 
 ```tsx
 import { Button } from '@ama/agora-design-system';
 
 <Button
-    appearence="outline" 
-    icon="agora-line-arrow-right-circle"
-    iconPosition="trailing"
-    iconAltText="Alternative Text"  
-    size="default"
-    variant="primary"
-  >
-    Button Text
-</Button>
-
+  appearence="solid"
+  icon="agora-line-arrow-right-circle"
+  iconPosition="trailing"
+  iconAltText="Alternative Text"
+  size="default"
+  variant="primary"
+>
+  Button Text
+</Button>;
 ```
 
- <h2 className="text-headings-l-strong my-8">Button Link.</h2>
+{' '}
+<h2 className="text-headings-l-strong my-8">Button Outline.</h2>
 
 ```tsx
 import { Button } from '@ama/agora-design-system';
 
 <Button
-    appearence="link" 
-    icon="agora-line-arrow-right-circle"
-    iconPosition="trailing"
-    iconAltText="Alternative Text"  
-    size="default"
-    variant="primary"
-  >
-    Button Text
-</Button>
-
+  appearence="outline"
+  icon="agora-line-arrow-right-circle"
+  iconPosition="trailing"
+  iconAltText="Alternative Text"
+  size="default"
+  variant="primary"
+>
+  Button Text
+</Button>;
 ```
 
+{' '}
+<h2 className="text-headings-l-strong my-8">Button Link.</h2>
+
+```tsx
+import { Button } from '@ama/agora-design-system';
+
+<Button
+  appearence="link"
+  icon="agora-line-arrow-right-circle"
+  iconPosition="trailing"
+  iconAltText="Alternative Text"
+  size="default"
+  variant="primary"
+>
+  Button Text
+</Button>;
+```
