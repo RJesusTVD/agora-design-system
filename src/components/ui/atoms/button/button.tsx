@@ -133,7 +133,8 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       type="button"
       disabled={disabled}
-      className={`btn btn-${size} btn-${appearence}--${variant} ${defaultAnimation && `animate-icon--${defaultAnimation}`} ${hasIcon ? `btn-with-icon--${iconPosition}` : ''
+      className={`btn btn-${size} btn-${appearence}--${variant} ${defaultAnimation && `animate-icon--${defaultAnimation}`} ${
+        hasIcon ? `btn-with-icon--${iconPosition}` : ''
       } ${fullWidth ? `btn-block` : ''} ${iconOnly ? `is-icon-only` : ''} ${className}`}
       {...props}
     >
