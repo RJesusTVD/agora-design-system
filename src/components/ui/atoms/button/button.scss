@@ -1,0 +1,399 @@
+//  Mixings
+@mixin dyeButton($naturalColors, $hoverColors, $activeColors, $disabledColors) {
+  &:not(:hover) {
+    @apply #{$naturalColors};
+  }
+
+  &:not(:active):hover {
+    @apply #{$hoverColors};
+  }
+
+  &:active {
+    @apply #{$activeColors};
+  }
+
+  &:disabled {
+    @apply #{$disabledColors} opacity-25;
+    pointer-events: none;
+  }
+}
+
+@mixin dyeIcon($naturalColors, $hoverColors, $activeColors) {
+  svg:first-of-type {
+    path {
+      fill: transparent;
+      @apply #{$naturalColors};
+    }
+  }
+
+  svg:last-of-type {
+    path {
+      stroke: transparent;
+      @apply #{$hoverColors};
+    }
+  }
+
+  &:not(:active):hover {
+    svg:last-of-type {
+      path {
+        stroke: transparent;
+        @apply #{$hoverColors};
+      }
+    }
+  }
+  &:active {
+    svg:last-of-type {
+      path {
+        stroke: transparent;
+        @apply #{$activeColors};
+      }
+    }
+  }
+}
+
+@mixin dyeLinkUnderline($color) {
+  &::after {
+    @apply #{$color};
+  }
+}
+
+@mixin animateIcon($firstIconInitState, $secondIconInitState, $firtIconHoverState) {
+  svg {
+    @apply transition-all ease-in-out;
+  }
+  svg:first-of-type {
+    @apply #{$firstIconInitState};
+  }
+
+  svg:last-of-type {
+    @apply #{$secondIconInitState};
+  }
+
+  &:hover {
+    svg:first-of-type {
+      @apply #{$firtIconHoverState};
+    }
+    svg:last-of-type {
+      @apply #{$firstIconInitState};
+    }
+  }
+}
+
+.btn {
+  @apply rounded-4 flex items-center justify-center transition-all  ease-in-out;
+
+  .icon-wrapper {
+    @apply pointer-events-none h-24;
+    min-width: 24px;
+    svg {
+      @apply absolute;
+    }
+  }
+
+  // Global styles for ButtonLinks
+  &[class*=' btn-link'] {
+    // apply for all ButtonLink
+    @apply rounded-none px-0 py-8 #{!important};
+
+    @apply relative no-underline;
+
+    &.btn-default {
+      &::after {
+        top: 42px !important;
+      }
+    }
+
+    &.btn-small {
+      &::after {
+        top: 32px !important;
+      }
+    }
+
+    &:not([class*='btn-with-icon'])::after {
+      @apply left-0 absolute  w-full transition-all ease-in-out;
+      height: 1px;
+      content: '';
+      top: 43px;
+      transform: scaleX(1);
+      transform-origin: center;
+    }
+
+    &:hover::after {
+      transform: scaleX(0);
+    }
+  }
+
+  // avoid underline decoration when Icon present
+  &[class*=' btn-with-icon'] {
+    @apply no-underline #{!important};
+  }
+
+  &[class*=' btn-list-link'] {
+    @apply justify-between text-right truncate;
+  }
+
+  // Sizes & Spacing
+  &-default {
+    @apply px-16;
+
+    span.children-wrapper{
+       @apply text-interaction-button-m; 
+    }
+
+    min-height: 60px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    &.is-icon-only {
+      @apply p-0 #{!important};
+      width: 60px;
+
+      .icon-wrapper {
+        @apply m-0;
+      }
+    }
+  }
+
+  &-small {
+    @apply px-16;
+
+    span.children-wrapper{
+      @apply text-interaction-button-s;
+    }
+
+    min-height: 44px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    &.is-icon-only {
+      @apply p-0 #{!important};
+      width: 44px;
+
+      .icon-wrapper {
+        @apply m-0;
+      }
+    }
+  }
+  // # end sizes
+
+  // Animate Icons according animation type
+  &.animate-icon--backward {
+    @include animateIcon('translate-x-0 opacity-100', 'translate-x-16 opacity-0', '-translate-x-16 opacity-0');
+  }
+
+  &.animate-icon--forward {
+    @include animateIcon('translate-x-0 opacity-100', '-translate-x-16 opacity-0', 'translate-x-16 opacity-0');
+  }
+  &.animate-icon--default {
+    @include animateIcon(
+      'translate-x-0 translate-y-0 opacity-100',
+      ' translate-x-0 translate-y-16 opacity-0',
+      'translate-x-0 -translate-y-16 opacity-0'
+    );
+  }
+  // # end animations
+
+
+  &-block {
+    @apply w-full justify-center;
+  }
+
+
+  &-with-icon {
+
+    
+
+    &--leading {
+      span.children-wrapper{
+        text-align: left !important;
+      }
+      @apply flex-row;
+
+      .icon-wrapper {
+        @apply mr-8 ml-0;
+      }
+    }
+
+    &--trailing {
+      
+      span.children-wrapper{
+        text-align: left !important;
+      }
+
+      @apply flex-row-reverse;
+
+      .icon-wrapper {
+        @apply ml-8 mr-0;
+      }
+    }
+  }
+
+  &-solid {
+    &--primary {
+      @include dyeButton(
+        'text-white bg-primary-600',
+        'text-white bg-primary-700',
+        'text-white bg-primary-800',
+        'text-white bg-primary-600'
+      );
+      @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
+    }
+    &--secondary {
+      @include dyeButton(
+        'text-dark bg-secondary-200', 
+        'text-dark bg-secondary-300', 
+        'text-dark bg-secondary-500', 
+        'text-dark bg-secondary-200');
+      @include dyeIcon('stroke-black', 'fill-black', 'fill-black');
+    }
+    &--success {
+      @include dyeButton(
+        'text-white bg-success-600',
+        'text-white bg-success-700',
+        'text-white bg-success-800',
+        'text-white bg-success-600'
+      );
+      @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
+    }
+    &--warning {
+      @include dyeButton(
+        'bg-alert-500 text-dark', 
+        'bg-alert-600 text-dark', 
+        'bg-alert-700 text-dark', 
+        'bg-alert-500 text-dark'
+        );
+      @include dyeIcon('stroke-neutral-900', 'fill-neutral-900', 'fill-neutral-900');
+    }
+    &--danger {
+      @include dyeButton(
+        'bg-danger-600 text-white', 
+        'bg-danger-700 text-white', 
+        'bg-danger-800 text-white', 
+        'bg-danger-600 text-white');
+      @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
+    }
+    &--neutral {
+      @include dyeButton(
+        'bg-neutral-900 text-white',
+        'bg-neutral-800 text-white',
+        'bg-neutral-900 text-white',
+        'bg-neutral-900 text-white'
+      );
+      @include dyeIcon('stroke-white', 'fill-white', 'fill-white');
+    }
+    &--white {
+      @include dyeButton(
+        'bg-white text-dark', 
+        'bg-neutral-100 text-dark', 
+        'bg-neutral-200 text-dark', 
+        'bg-white text-dark'
+        );
+      @include dyeIcon('stroke-neutral-900', 'fill-neutral-900', 'fill-neutral-900');
+    }
+  }
+
+  &-outline {
+    &--primary {
+      @include dyeButton(
+        'border-neutral-300 text-primary-600 border-2',
+        'border-primary-600 text-primary-600 border-2',
+        'border-primary-800 text-primary-800 border-2',
+        'border-neutral-300 text-primary-600 border-2'
+      );
+      @include dyeIcon('stroke-primary-500', 'fill-primary-500', 'fill-primary-800');
+    } 
+    &--success {
+      @include dyeButton(
+        'border-neutral-300 text-success-600 border-2',
+        'border-success-600 text-success-600 border-2',
+        'border-success-800 text-success-800 border-2',
+        'border-neutral-300 text-success-600 border-2'
+      );
+      @include dyeIcon('stroke-success-600', 'fill-success-600', 'fill-success-800');
+    }
+    &--warning {
+      @include dyeButton(
+        'border-neutral-300 text-alert-800 border-2',
+        'border-alert-600 text-alert-800 border-2',
+        'border-danger-800 text-danger-800 border-2',
+        'border-neutral-300 text-alert-800 border-2'
+      );
+      @include dyeIcon('stroke-alert-800', 'fill-alert-600', 'fill-alert-700');
+    }
+    &--danger {
+      @include dyeButton(
+        'border-neutral-300 text-danger-600 border-2',
+        'border-danger-600 text-danger-600 border-2',
+        'border-danger-700 text-danger-800 border-2',
+        'border-neutral-300 text-danger-600 border-2'
+      );
+      @include dyeIcon('stroke-danger-600', 'fill-danger-600', 'fill-danger-800');
+    }
+    &--neutral {
+      @include dyeButton(
+        'border-neutral-300 text-dark border-2',
+        'border-neutral-600 text-dark border-2',
+        'border-neutral-900 text-dark border-2',
+        'border-neutral-300 text-dark border-2'
+      );
+      @include dyeIcon('stroke-black', 'fill-dark', 'fill-neutral-700');
+    }
+    &--white {
+      @include dyeButton(
+        'border-white text-white border-2',
+        'border-neutral-600 text-white border-2',
+        'border-neutral-800 text-neutral-300 border-2',
+        'border-white text-white border-2'
+      );
+      @include dyeIcon('stroke-white', 'fill-white', 'fill-neutral-300');
+    }
+  }
+
+  &-link {
+    &--primary {
+      @include dyeButton(
+        'text-primary-600', 
+        'text-primary-600', 
+        'text-primary-700', 
+        'text-primary-600'
+        );
+      @include dyeLinkUnderline('bg-primary-600');
+      @include dyeIcon('stroke-primary-500', 'fill-primary-700', 'fill-primary-500');
+    }
+    &--success {
+      @include dyeButton(
+        'text-success-600', 
+        'text-success-600', 
+        'text-success-700', 
+        'text-success-600'
+        );
+      @include dyeLinkUnderline('bg-success-600');
+      @include dyeIcon('stroke-success-600', 'fill-success-600', 'fill-success-800');
+    }
+    &--warning {
+      @include dyeButton('text-alert-800 decoration-alert-600', 'text-alert-800', 'text-alert-800 decoration-alert-600', 'text-alert-600');
+      @include dyeLinkUnderline('bg-alert-600');
+      @include dyeIcon('stroke-alert-800', 'fill-alert-600', 'fill-alert-700');
+    }
+    &--danger {
+      @include dyeButton('text-danger-600', 'text-danger-700', 'text-danger-800', 'text-danger-600');
+      @include dyeLinkUnderline('bg-danger-600');
+      @include dyeIcon('stroke-danger-600', 'fill-danger-600', 'fill-danger-800');
+    }
+    &--neutral {
+      @include dyeButton('text-dark decoration-dark', 'text-dark', 'text-dark decoration-dark', 'text-dark decoration-dark');
+      @include dyeLinkUnderline('bg-neutral-900');
+      @include dyeIcon('stroke-dark', 'fill-neutral-900', 'fill-neutral-700');
+    }
+    &--white {
+      @include dyeButton(
+        'text-white decoration-white',
+        'text-white',
+        'text-neutral-300 decoration-neutral-200',
+        'text-white decoration-white'
+      );
+      @include dyeLinkUnderline('bg-white');
+      @include dyeIcon('stroke-white', 'fill-white', 'fill-neutral-300');
+    }
+  }
+}
