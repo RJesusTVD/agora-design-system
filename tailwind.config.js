@@ -62,7 +62,7 @@ module.exports = {
       'interaction-button-s': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '500' }],
       'interaction-button-tab': ['0.875rem', { lineHeight: '1.125rem', letterSpacing: '0', fontWeight: '500' }],
       'interaction-input-label': ['1rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '500' }],
-      'interaction-input-text': ['1rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '500' }],
+      'interaction-input-text': ['1rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '400' }],
       'interaction-menu-main': ['0.875rem', { lineHeight: '1.5rem', letterSpacing: '0', fontWeight: '400' }],
       'interaction-menu-secondary': ['0.938rem', { lineHeight: '1.25rem', letterSpacing: '0', fontWeight: '400' }],
       'interaction-side-nav': ['1rem', { lineHeight: '1.75rem', letterSpacing: '0', fontWeight: '600' }],
