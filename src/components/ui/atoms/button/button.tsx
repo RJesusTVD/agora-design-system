@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import classNames from 'classnames';
 import { Icon } from '../icon';
 import { ButtonAppearence, ButtonSizes, ButtonVariant, IconWrapperType } from './types';
 import './button.scss';
@@ -80,6 +81,33 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
    */
   children?: ReactNode;
 }
+/**
+ * Return icon default animation class according icon name and default position.
+ * @param icon string
+ * @param iconPosition leading|trailing
+ * @returns string
+ */
+function getDefaultIconAnimation(icon: string, iconPosition: 'leading' | 'trailing'): string {
+  let defaultAnimation = 'default';
+  if (icon) {
+    // if icon contains "arrow" or "chevron" word check for direction left/right and override the
+    // default animation to preserve armony
+    // this will code below will prevent arrow/chevron icon left/right direction perform default animation(up/down)
+    const regex = /arrow|chevron/g;
+    if (regex.test(icon)) {
+      if (icon.indexOf('left') >= 0) {
+        defaultAnimation = 'backward';
+      } else if (icon.indexOf('right') >= 0) {
+        defaultAnimation = 'forward';
+      }
+    }
+  } else if (iconPosition === 'leading') {
+    defaultAnimation = 'backward';
+  } else if (iconPosition === 'trailing') {
+    defaultAnimation = 'forward';
+  }
+  return defaultAnimation;
+}
 
 export const Button: React.FC<ButtonProps> = ({
   appearence = 'solid',
@@ -97,47 +125,33 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  /**
-   * Detects default icon in case hasIcon var is set true.
-   * @type {string|false}
-   */
-  let defaultIcon: string | false = false;
-  if (hasIcon || iconOnly) {
-    defaultIcon = iconPosition === 'leading' ? 'agora-line-arrow-left-circle' : 'agora-line-arrow-right-circle';
-  }
-
+  let defaultIcon = '';
   let defaultAnimation = '';
-
-  if (defaultIcon) {
-    if (icon) {
-      defaultAnimation = 'default';
-      // if icon contains "arrow" or "chevron" word check for direction left/right and override the
-      // default animation to preserve armony
-      // this will code below will prevent arrow/chevron icon left/right direction perform default animation(up/down)
-      const regex = /arrow|chevron/g;
-      if (icon && regex.test(icon)) {
-        if (icon.indexOf('left') >= 0) {
-          defaultAnimation = 'backward';
-        } else if (icon.indexOf('right') >= 0) {
-          defaultAnimation = 'forward';
-        }
-      }
-    } else if (!icon && iconPosition === 'leading') {
-      defaultAnimation = 'backward';
-    } else if (!icon && iconPosition === 'trailing') {
-      defaultAnimation = 'forward';
-    }
+  if (hasIcon || iconOnly) {
+    /**
+     * Detects default icon in case hasIcon/iconOnly params be true.
+     * @type string
+     */
+    defaultIcon = iconPosition === 'leading' ? 'agora-line-arrow-left-circle' : 'agora-line-arrow-right-circle';
+    defaultAnimation = getDefaultIconAnimation(icon, iconPosition);
   }
+
+  /**
+   * Building button classname dynamically according parameters.
+   */
+  const buttonClassName = classNames(
+    `btn btn-${size} btn-${appearence}--${variant}`,
+    {
+      [`animate-icon--${defaultAnimation}`]: defaultAnimation !== '',
+      [`btn-with-icon--${iconPosition}`]: hasIcon,
+      'btn-block': fullWidth,
+      'is-icon-only': iconOnly
+    },
+    className
+  );
 
   return (
-    <button
-      type="button"
-      disabled={disabled}
-      className={`btn btn-${size} btn-${appearence}--${variant} ${defaultAnimation && `animate-icon--${defaultAnimation}`} ${
-        hasIcon ? `btn-with-icon--${iconPosition}` : ''
-      } ${fullWidth ? `btn-block` : ''} ${iconOnly ? `is-icon-only` : ''} ${className}`}
-      {...props}
-    >
+    <button type="button" disabled={disabled} className={buttonClassName} {...props}>
       {iconOnly ? (
         <IconWrapper icon={icon ?? defaultIcon} iconHover={iconHover} iconAltText={iconAltText} />
       ) : (
