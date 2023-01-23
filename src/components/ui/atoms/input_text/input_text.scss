@@ -1,0 +1,172 @@
+@mixin dyeLineIcon($colorClass) {
+  path {
+    fill: transparent;
+    @apply #{$colorClass} #{!important};
+  }
+}
+
+@mixin dyeSolidIcon($colorClass) {
+  path {
+    stroke: transparent;
+    @apply #{$colorClass} #{!important};
+  }
+}
+
+.agora-input-text--wrapper {
+  @apply flex flex-col relative;
+
+  // normal leading icons color on default status input text
+  .input-icon {
+    &.dye-as-solid {
+      @include dyeSolidIcon('fill-neutral-900 opacity-70');
+    }
+    &.dye-as-line {
+      @include dyeLineIcon('stroke-neutral-900 opacity-70');
+    }
+  }
+  //# end
+
+  & span.hint-icon-wrapper {
+    svg {
+      path {
+        stroke: transparent;
+        @apply fill-informative-500;
+      }
+    }
+  }
+
+  .feedback-icon-wrapper {
+    &--info {
+      path {
+        stroke: transparent;
+        @apply fill-informative-500;
+      }
+    }
+
+    &--success {
+      path {
+        stroke: transparent;
+        @apply fill-success-500;
+      }
+    }
+
+    &--danger {
+      path {
+        stroke: transparent;
+        @apply fill-danger-500;
+      }
+    }
+
+    &--warning {
+      path {
+        stroke: transparent;
+        @apply fill-alert-700;
+      }
+    }
+  }
+
+  .input-leading--icon {
+    @apply right-0 bottom-24 left-16 absolute w-min;
+    top: 18px;
+  }
+
+  .input-btn--clear {
+    @apply bottom-24 absolute cursor-pointer invisible flex justify-center items-center right-8 top-8;
+    width: 44px;
+    height: 44px;
+  }
+
+  .agora-input-text {
+    @apply border-2 border-secondary-500 outline-none rounded-4 px-16 transition-all ease-in-out text-interaction-input-text text-neutral-900;
+    height: 60px;
+
+    &.has-leading-icon {
+      @apply pl-56;
+    }
+
+    &:hover:not(:focus):not(:disabled):not(:read-only) {
+      @apply border-neutral-800;
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-neutral-900 opacity-100');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-neutral-900 opacity-100');
+        }
+      }
+      //# end
+    }
+
+    &:disabled {
+      @apply border-none border-neutral-800 cursor-not-allowed bg-neutral-100 #{!important};
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-neutral-900  opacity-70');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-neutral-900  opacity-70');
+        }
+      }
+      //# end
+    }
+
+    & ~ .input-btn--clear:active {
+      @apply visible #{!important};
+    }
+
+    &:not(:placeholder-shown) {
+      @apply border-neutral-500;
+    }
+
+    &.has-value:not(:read-only) {
+      & ~ .input-btn--clear {
+        @apply visible #{!important};
+      }
+    }
+
+    &:not(:disabled):focus {
+      @apply border-primary-600 border-2;
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-primary-600 opacity-100');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-primary-600  opacity-100');
+        }
+      }
+      //# end
+
+      &:read-only {
+        & ~ .input-btn--clear {
+          @apply invisible #{!important};
+        }
+      }
+    }
+  }
+
+  &.input-has-error {
+    .input-btn--clear {
+      path {
+        fill: transparent;
+        @apply stroke-neutral-900 #{!important};
+      }
+    }
+
+    .input-feedback {
+      path {
+        stroke: transparent;
+        @apply fill-danger-500 #{!important};
+      }
+    }
+
+    .agora-input-text:not(:disabled):not(:read-only) {
+      @apply border-2 bg-danger-50 border-danger-500 #{!important};
+    }
+  }
+}
