@@ -5,7 +5,11 @@
   padding-bottom: 10px;
 
   & > .radio-label {
-    @apply text-text-m text-neutral-900 select-none;
+    @apply text-text-m text-neutral-900 select-none cursor-pointer ;
+  }
+
+  & > label {
+    @apply cursor-pointer;
   }
 
   &.input-only {
@@ -62,7 +66,7 @@
 
   .radio-span {
     margin-top: 2px;
-    @apply z-50 rounded-24 border-2 border-neutral-600 mr-16 h-24 w-24 flex justify-center items-center outline-1 outline outline-transparent outline-offset-4 transition-all;
+    @apply z-50 pointer-events-none rounded-24 border-2 border-neutral-600 mr-16 h-24 w-24 flex justify-center items-center outline-1 outline outline-transparent outline-offset-4 transition-all;
   }
 
   &.has-error .radio-span {
@@ -75,8 +79,8 @@
       top: 6px !important;
     }
 
-    .radio-label {
-      padding-top: 2px;
+    label {
+      margin-top: 4px;
     }
 
     .radio-span {

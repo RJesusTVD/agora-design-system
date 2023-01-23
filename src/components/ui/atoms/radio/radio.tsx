@@ -41,11 +41,13 @@ export const Radio: React.FC<RadioProps> = ({ label = 'Label', hasError, isCheck
   };
 
   return (
-    <label className={inputWrapper} htmlFor={id} id={`${id}-label`} aria-checked={checked}>
+    <div className={inputWrapper}>
       <input type="radio" id={id} checked={checked} onChange={handleChange} {...props} />
       <span className="radio-span" />
-      <span className="radio-label">{children || label}</span>
-    </label>
+      <label htmlFor={id}>
+        <span className="radio-label">{children || label}</span>
+      </label>
+    </div>
   );
 };
 
