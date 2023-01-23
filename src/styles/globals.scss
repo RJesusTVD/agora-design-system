@@ -21,3 +21,9 @@
     @apply text-text-m;
   }
 }
+textarea,
+input[type] {
+  &::placeholder {
+    @apply text-interaction-input-text text-neutral-700;
+  }
+}
