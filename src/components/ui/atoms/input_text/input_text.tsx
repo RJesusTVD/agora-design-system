@@ -33,7 +33,7 @@ export interface InputTextProps extends React.ComponentPropsWithRef<'input'> {
    * Indicates the feedback state of feedback text.
    * This param will change the left feedback icon and dye it.
    */
-  feedbackState?: 'info' | 'danger' | 'success' | 'danger';
+  feedbackState?: 'info' | 'danger' | 'success' | 'warning';
   /**
    * Hightlight the input indicating some error
    * @default false
