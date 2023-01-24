@@ -58,13 +58,13 @@ sonarqube-check:
   script:
     - echo $BUILD_FOR_STAGE > $METADATA_PATH/environment.env
     - docker login -u $NEXUS_REGISTRY_USER -p $NEXUS_REGISTRY_PASSWORD $NEXUS_REGISTRY_DEPLOY_URL
-    - docker build -f Dockerfile -t $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/app.version) .
-    - docker push $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/app.version)
+    - docker build -f Dockerfile -t $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/version.ver) .
+    - docker push $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/version.ver)
     - |
       if [ $BUILD_FOR_STAGE = 'prd' ]; then
         docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD $DOCKER_HUB_URL
-        docker build -f Dockerfile -t ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/app.version) .
-        docker push ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/app.version)
+        docker build -f Dockerfile -t ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/version.ver) .
+        docker push ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/version.ver)
       fi
 
 build-dev-storybook:
