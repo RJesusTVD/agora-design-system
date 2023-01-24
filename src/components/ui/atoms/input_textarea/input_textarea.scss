@@ -1,0 +1,142 @@
+@mixin dyeLineIcon($colorClass) {
+  path {
+    fill: transparent;
+    @apply #{$colorClass} #{!important};
+  }
+}
+
+@mixin dyeSolidIcon($colorClass) {
+  path {
+    stroke: transparent;
+    @apply #{$colorClass} #{!important};
+  }
+}
+
+.agora-input-textarea--wrapper {
+  @apply flex flex-col relative;
+
+  // normal leading icons color on default status input text
+  .input-icon {
+    &.dye-as-solid {
+      @include dyeSolidIcon('fill-neutral-900 opacity-70');
+    }
+    &.dye-as-line {
+      @include dyeLineIcon('stroke-neutral-900 opacity-70');
+    }
+  }
+  //# end
+
+  & span.hint-icon-wrapper {
+    svg {
+      path {
+        stroke: transparent;
+        @apply fill-informative-500;
+      }
+    }
+  }
+
+  .feedback-icon-wrapper {
+    &--info {
+      path {
+        stroke: transparent;
+        @apply fill-informative-500;
+      }
+    }
+
+    &--success {
+      path {
+        stroke: transparent;
+        @apply fill-success-500;
+      }
+    }
+
+    &--danger {
+      path {
+        stroke: transparent;
+        @apply fill-danger-500;
+      }
+    }
+
+    &--warning {
+      path {
+        stroke: transparent;
+        @apply fill-alert-700;
+      }
+    }
+  }
+
+  .input-leading--icon {
+    @apply right-0 bottom-24 left-16 absolute w-min;
+    top: 18px;
+  }
+
+  .agora-input-textarea {
+    @apply border-2 border-secondary-500 outline-none rounded-4 p-16 transition-all ease-in-out text-interaction-input-text pr-48 text-neutral-900;
+
+    &.has-leading-icon {
+      @apply pl-56;
+    }
+
+    &:hover:not(:focus):not(:disabled):not(:read-only) {
+      @apply border-neutral-800;
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-neutral-900 opacity-100');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-neutral-900 opacity-100');
+        }
+      }
+      //# end
+    }
+
+    &:disabled {
+      @apply border-none border-neutral-800 cursor-not-allowed bg-neutral-100 #{!important};
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-neutral-900  opacity-70');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-neutral-900  opacity-70');
+        }
+      }
+      //# end
+    }
+
+    &:not(:placeholder-shown) {
+      @apply border-neutral-500;
+    }
+
+    &:not(:disabled):focus {
+      @apply border-primary-600 border-2 pr-48;
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-primary-600 opacity-100');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-primary-600  opacity-100');
+        }
+      }
+      //# end
+    }
+  }
+
+  &.input-has-error {
+    .input-feedback {
+      path {
+        stroke: transparent;
+        @apply fill-danger-500 #{!important};
+      }
+    }
+
+    .agora-input-textarea:not(:disabled):not(:read-only) {
+      @apply border-2 bg-danger-50 border-danger-500 #{!important};
+    }
+  }
+}
