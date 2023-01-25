@@ -5,7 +5,7 @@ import './radio.scss';
 export interface RadioProps extends React.ComponentPropsWithRef<'input'> {
   /**
    * Radio descriptive text
-   * @default 'Label'
+   * @default 'Lorem ipsum dolor sit amet'
    */
   label: string;
   /**
@@ -23,9 +23,22 @@ export interface RadioProps extends React.ComponentPropsWithRef<'input'> {
    * @default false
    */
   hideLabel: boolean | 'true' | 'false';
+  /**
+   * Custom child node.
+   * @default null
+   */
+  child: React.ReactNode;
 }
 
-export const Radio: React.FC<RadioProps> = ({ label = 'Label', hasError, isChecked, hideLabel, id, children, ...props }) => {
+export const Radio: React.FC<RadioProps> = ({
+  label = 'Lorem ipsum dolor sit amet',
+  hasError,
+  isChecked,
+  hideLabel,
+  id,
+  child,
+  ...props
+}) => {
   const inputWrapper = classNames('agora-radio-wrapper', {
     'has-error': hasError,
     'input-only': hideLabel
@@ -42,10 +55,10 @@ export const Radio: React.FC<RadioProps> = ({ label = 'Label', hasError, isCheck
 
   return (
     <div className={inputWrapper}>
-      <input type="radio" id={id} checked={checked} onChange={handleChange} {...props} />
+      <input type="radio" id={id} checked={checked} aria-label={label} onChange={handleChange} {...props} />
       <span className="radio-span" />
-      <label htmlFor={id}>
-        <span className="radio-label">{children || label}</span>
+      <label htmlFor={id} className="radio-label text-text-m">
+        {child || label}
       </label>
     </div>
   );

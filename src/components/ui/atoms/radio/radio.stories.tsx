@@ -1,6 +1,6 @@
 import { ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Radio } from './radio';
+import { Radio, RadioProps } from './radio';
 import { argTypes } from './radio.csf';
 
 export default {
@@ -11,7 +11,7 @@ export default {
   component: Radio
 } as ComponentMeta<typeof Radio>;
 
-export const RadioDefault = (args) => {
+export const RadioDefault = (args: RadioProps) => {
   return (
     <div className="p-16 flex flex-col">
       <Radio {...args} id="form-radio" name="input-name" />
@@ -23,33 +23,21 @@ RadioDefault.storyName = 'Radio';
 const RadioChildrenNode = () => {
   return (
     <div>
-      <p>
-        I declare that I read and accept uncondicionally{' '}
-        <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
-          Terms
-        </a>{' '}
-        and{' '}
-        <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
-          Conditions
-        </a>{' '}
-        of Agora Design System.
-      </p>
+      <p>Lorem ipsum dolor sit amet</p>
     </div>
   );
 };
 
-export const RadioChildren = (args) => {
+export const RadioChildren = (args: RadioProps) => {
   return (
     <div className="p-16">
-      <Radio {...args} id="form-radio" name="input-name">
-        <RadioChildrenNode />
-      </Radio>
+      <Radio {...args} id="form-radio" name="input-name" child={<RadioChildrenNode />} />
     </div>
   );
 };
-RadioChildren.storyName = 'Radio React Children';
+RadioChildren.storyName = 'Radio Custom Children';
 
-export const RadioNoLabel = (args) => {
+export const RadioNoLabel = (args: RadioProps) => {
   return (
     <div className="p-16">
       <Radio {...args} id="form-radio" name="input-name" hideLabel />
@@ -58,7 +46,7 @@ export const RadioNoLabel = (args) => {
 };
 RadioNoLabel.storyName = 'Radio No Label';
 
-export const RadioDisabled = (args) => {
+export const RadioDisabled = (args: RadioProps) => {
   return (
     <div className="p-16">
       <Radio {...args} id="form-radio" name="input-name" disabled isChecked />
@@ -67,7 +55,7 @@ export const RadioDisabled = (args) => {
 };
 RadioDisabled.storyName = 'Radio Disabled';
 
-export const RadioHasError = (args) => {
+export const RadioHasError = (args: RadioProps) => {
   return (
     <div className="p-16">
       <Radio {...args} id="form-radio" name="input-name" hasError />

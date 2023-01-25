@@ -27,32 +27,20 @@ import { Radio } from '@ama/agora-design-system';
 <Radio id="form-radio" label="Radio Label" name="input-name" labelIsHidden />;
 ```
 
-<h2 className="text-headings-l-strong my-8">Radio Children.</h2>
+<h2 className="text-headings-l-strong my-8">Radio Custom Children.</h2>
 
 ```tsx
 import { Radio } from '@ama/agora-design-system';
 
-const RadioChildrenNode = () => {
+const RadioCustomChildNode = () => {
   return (
     <div>
-      <p>
-        I declare that I read and accept uncondicionally{' '}
-        <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
-          Terms
-        </a>{' '}
-        and{' '}
-        <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
-          Conditions
-        </a>{' '}
-        of Agora Design System.
-      </p>
+      <p>Lorem ipsum dolor sit amet</p>
     </div>
   );
 };
 
-<Radio hasError id="form-radio" name="input-name">
-  <RadioChildrenNode />
-</Radio>;
+<Radio id="form-radio" name="input-name" child={<RadioCustomChildNode />} />;
 ```
 
 <h2 className="text-headings-l-strong my-8">Radio Error.</h2>

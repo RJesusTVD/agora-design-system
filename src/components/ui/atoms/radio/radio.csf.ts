@@ -12,7 +12,7 @@ export const argTypes = {
   label: {
     type: { name: 'string', required: true },
     description: 'Radio descriptive label',
-    defaultValue: 'Form Label',
+    defaultValue: 'Lorem ipsum dolor sit amet',
     control: {
       type: 'text'
     }
