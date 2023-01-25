@@ -49,11 +49,20 @@ RadioNoLabel.storyName = 'Radio No Label';
 export const RadioDisabled = (args: RadioProps) => {
   return (
     <div className="p-16">
-      <Radio {...args} id="form-radio" name="input-name" disabled isChecked />
+      <Radio {...args} id="form-radio" name="input-name" disabled />
     </div>
   );
 };
 RadioDisabled.storyName = 'Radio Disabled';
+
+export const RadioDisabledSelected = (args: RadioProps) => {
+  return (
+    <div className="p-16">
+      <Radio {...args} id="form-radio" name="input-name" disabled isChecked />
+    </div>
+  );
+};
+RadioDisabledSelected.storyName = 'Radio Disabled Selected';
 
 export const RadioHasError = (args: RadioProps) => {
   return (

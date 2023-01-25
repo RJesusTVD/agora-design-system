@@ -1,5 +1,5 @@
 .agora-radio-wrapper {
-  @apply flex items-start cursor-pointer relative;
+  @apply flex items-start cursor-pointer relative w-fit;
   min-height: 44px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -23,7 +23,7 @@
     }
   }
 
-  &:hover > .radio-span {
+  &:hover input:not(:disabled) ~ .radio-span {
     @apply outline-primary-500 rounded-24;
   }
 
@@ -49,8 +49,14 @@
       }
     }
 
+    &:disabled:is(:checked) ~ .radio-span {
+      &::before {
+        @apply opacity-100 bg-neutral-300;
+      }
+    }
+
     &:focus ~ .radio-span {
-      @apply outline-1 outline-offset-4 outline-primary-500 rounded-24;
+      @apply outline-2 outline-offset-4 outline-primary-500 rounded-24;
     }
 
     &:disabled {
@@ -68,7 +74,7 @@
 
   .radio-span {
     margin-top: 2px;
-    @apply z-50 pointer-events-none rounded-24 border-2 border-neutral-600 mr-16 h-24 w-24 flex justify-center items-center outline-1 outline outline-transparent outline-offset-4 transition-all;
+    @apply z-50 pointer-events-none rounded-24 border-2 border-neutral-600 mr-16 h-24 w-24 flex justify-center items-center outline-2 outline outline-transparent outline-offset-4 transition-all;
   }
 
   &.has-error .radio-span {
