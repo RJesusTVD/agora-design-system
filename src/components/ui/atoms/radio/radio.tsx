@@ -9,7 +9,7 @@ export interface RadioProps extends React.ComponentPropsWithRef<'input'> {
    */
   label: string;
   /**
-   * Radio descriptive text when label hidden
+   * Descritive attribute that labels the checkbox in terms of accessibility
    * @default null
    */
   ariaLabel?: string;

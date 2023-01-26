@@ -19,7 +19,7 @@ export const argTypes = {
   },
   ariaLabel: {
     type: { name: 'string', required: false },
-    description: 'Radio descriptive text when label hidden',
+    description: 'Descritive attribute that labels the checkbox in terms of accessibility',
     defaultValue: '',
     control: {
       type: 'text'
