@@ -24,10 +24,10 @@ export interface RadioProps extends React.ComponentPropsWithRef<'input'> {
    */
   hideLabel: boolean | 'true' | 'false';
   /**
-   * Custom child node.
-   * @default null
+   * Decides if this field could be optional.
+   * @default false
    */
-  child: React.ReactNode;
+  isOptional: boolean | 'true' | 'false';
 }
 
 export const Radio: React.FC<RadioProps> = ({
@@ -35,16 +35,18 @@ export const Radio: React.FC<RadioProps> = ({
   hasError,
   isChecked,
   hideLabel,
+  isOptional,
   id,
-  child,
+  children,
   ...props
 }) => {
   const inputWrapper = classNames('agora-radio-wrapper', {
     'has-error': hasError,
     'input-only': hideLabel
   });
+  const propsClone = { ...props };
 
-  const { onChange } = props;
+  const { onChange } = propsClone;
 
   const [checked, setChecked] = useState(isChecked);
 
@@ -53,12 +55,15 @@ export const Radio: React.FC<RadioProps> = ({
     onChange?.(evt);
   };
 
+  if (isOptional) delete propsClone.required;
+  else propsClone.required = true;
+
   return (
     <div className={inputWrapper}>
-      <input type="radio" id={id} checked={checked} aria-label={label} onChange={handleChange} {...props} />
+      <input type="radio" id={id} checked={checked} aria-label={label} onChange={handleChange} {...propsClone} />
       <span className="radio-span" />
       <label htmlFor={id} className="radio-label text-text-m">
-        {child || label}
+        {children || label}
       </label>
     </div>
   );
