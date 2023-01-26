@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Atoms/Checkbox/Checkbox Docs" />
+
+<div className="mb-32 text-headings-lg-strong">
+  <u>Checkbox</u>
+  <h2 className="text-headings-l-strong mb-8">Description </h2>
+  <p className="fs-16">Checkable area with two states.</p>
+</div>
+
+{' '}
+
+<h2 className="text-headings-l-strong my-8">Component usage.</h2>
+<h2 className="text-headings-l-strong my-8">Checkbox + Label.</h2>
+
+```tsx
+import { Checkbox } from '@ama/agora-design-system';
+
+<Checkbox id="form-checkbox" label="Checkbox Label" name="input-name" />;
+```
+
+<h2 className="text-headings-l-strong my-8">Checkbox No Label.</h2>
+
+```tsx
+import { Checkbox } from '@ama/agora-design-system';
+
+<Checkbox id="form-checkbox" label="Checkbox Label" name="input-name" labelIsHidden />;
+```
+
+<h2 className="text-headings-l-strong my-8">Checkbox Optional.</h2>
+
+```tsx
+import { Checkbox } from '@ama/agora-design-system';
+
+<Checkbox hasError id="form-checkbox" label="Checkbox Label" name="input-name" isOptional />;
+```
+
+<h2 className="text-headings-l-strong my-8">Checkbox Custom Children.</h2>
+
+```tsx
+import { Checkbox } from '@ama/agora-design-system';
+
+const CheckboxCustomChildNode = () => {
+  return (
+    <div>
+      <p>Lorem ipsum dolor sit amet</p>
+    </div>
+  );
+};
+
+<Checkbox id="form-checkbox" name="input-name">
+  <CheckboxCustomChildNode />
+</Checkbox>;
+```
+
+<h2 className="text-headings-l-strong my-8">Checkbox Error.</h2>
+
+```tsx
+import { Checkbox } from '@ama/agora-design-system';
+
+<Checkbox hasError id="form-checkbox" label="Checkbox Label" name="input-name" />;
+```
