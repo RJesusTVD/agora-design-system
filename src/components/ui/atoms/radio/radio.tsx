@@ -5,9 +5,14 @@ import './radio.scss';
 export interface RadioProps extends React.ComponentPropsWithRef<'input'> {
   /**
    * Radio descriptive text
-   * @default 'Lorem ipsum dolor sit amet'
+   * @default ''
    */
   label: string;
+  /**
+   * Radio descriptive text when label hidden
+   * @default null
+   */
+  ariaLabel?: string;
   /**
    * Hightlight the input indicating some error
    * @default false
@@ -31,7 +36,8 @@ export interface RadioProps extends React.ComponentPropsWithRef<'input'> {
 }
 
 export const Radio: React.FC<RadioProps> = ({
-  label = 'Lorem ipsum dolor sit amet',
+  label = '',
+  ariaLabel,
   hasError,
   isChecked,
   hideLabel,
@@ -60,7 +66,7 @@ export const Radio: React.FC<RadioProps> = ({
 
   return (
     <div className={inputWrapper}>
-      <input type="radio" id={id} checked={checked} aria-label={label} onChange={handleChange} {...propsClone} />
+      <input type="radio" id={id} checked={checked} aria-label={ariaLabel || label} onChange={handleChange} {...propsClone} />
       <span className="radio-span" />
       <label htmlFor={id} className="radio-label text-text-m">
         {children || label}

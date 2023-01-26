@@ -17,6 +17,14 @@ export const argTypes = {
       type: 'text'
     }
   },
+  ariaLabel: {
+    type: { name: 'string', required: false },
+    description: 'Radio descriptive text when label hidden',
+    defaultValue: '',
+    control: {
+      type: 'text'
+    }
+  },
   disabled: {
     type: { name: 'boolean', required: false },
     description: 'Indicate if this field is able to be selected',
@@ -35,6 +43,11 @@ export const argTypes = {
   isChecked: {
     type: { name: 'boolean', required: false },
     description: 'Should this field must start checked',
+    defaultValue: false
+  },
+  isOptional: {
+    type: { name: 'boolean', required: false },
+    description: 'Decides if this field could be optional',
     defaultValue: false
   }
 };

@@ -31,7 +31,9 @@ const RadioChildrenNode = () => {
 export const RadioChildren = (args: RadioProps) => {
   return (
     <div className="p-16">
-      <Radio {...args} id="form-radio" name="input-name" child={<RadioChildrenNode />} />
+      <Radio {...args} id="form-radio" name="input-name">
+        <RadioChildrenNode />
+      </Radio>
     </div>
   );
 };
