@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Atoms/Radio/Radio Docs" />
+
+<div className="mb-32 text-headings-lg-strong">
+  <u>Radio</u>
+  <h2 className="text-headings-l-strong mb-8">Description </h2>
+  <p className="fs-16">Represents an option from a set of options where only one may be selected.</p>
+</div>
+
+{' '}
+
+<h2 className="text-headings-l-strong my-8">Component usage.</h2>
+<h2 className="text-headings-l-strong my-8">Radio + Label.</h2>
+
+```tsx
+import { Radio } from '@ama/agora-design-system';
+
+<Radio id="form-radio" label="Radio Label" name="input-name" />;
+```
+
+<h2 className="text-headings-l-strong my-8">Radio No Label.</h2>
+
+```tsx
+import { Radio } from '@ama/agora-design-system';
+
+<Radio id="form-radio" label="Radio Label" name="input-name" labelIsHidden />;
+```
+
+<h2 className="text-headings-l-strong my-8">Radio Custom Children.</h2>
+
+```tsx
+import { Radio } from '@ama/agora-design-system';
+
+<Radio id="form-radio" name="input-name">
+  <div>
+    <p>
+      I declare that I read and accept uncondicionally{' '}
+      <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+        Terms
+      </a>
+      and
+      <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+        Conditions
+      </a>
+      of Agora Design System.
+    </p>
+  </div>
+</Radio>;
+```
+
+<h2 className="text-headings-l-strong my-8">Radio Error.</h2>
+
+```tsx
+import { Radio } from '@ama/agora-design-system';
+
+<Radio hasError id="form-radio" label="Radio Label" name="input-name" />;
+```

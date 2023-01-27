@@ -1,0 +1,99 @@
+.agora-radio-wrapper {
+  @apply flex items-start cursor-pointer relative w-fit;
+  min-height: 44px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  & > .radio-label {
+    @apply text-text-m text-neutral-900 select-none cursor-pointer;
+  }
+
+  & > label {
+    @apply cursor-pointer;
+  }
+
+  &.input-only {
+    @apply p-0 w-fit items-center #{!important};
+
+    .radio-span {
+      @apply m-0;
+    }
+    .radio-label {
+      @apply hidden;
+    }
+  }
+
+  &:hover input:not(:disabled) ~ .radio-span {
+    @apply outline-primary-500 rounded-24;
+  }
+
+  input {
+    @apply absolute opacity-0 cursor-pointer;
+    top: 2px;
+
+    & ~ .radio-span::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      @apply bg-white absolute rounded-16 opacity-0;
+    }
+
+    width: 44px;
+    height: 44px;
+    left: -10px;
+
+    &:checked ~ .radio-span {
+      @apply bg-primary-500 border-primary-500;
+      &::before {
+        @apply opacity-100;
+      }
+    }
+
+    &:disabled:is(:checked) ~ .radio-span {
+      &::before {
+        @apply opacity-100 bg-neutral-300;
+      }
+    }
+
+    &:focus ~ .radio-span {
+      @apply outline-2 outline-offset-4 outline-primary-500 rounded-24;
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed;
+
+      & ~ .radio-label {
+        @apply text-neutral-400 cursor-not-allowed;
+      }
+
+      & ~ .radio-span {
+        @apply bg-neutral-100 border-neutral-300;
+      }
+    }
+  }
+
+  .radio-span {
+    margin-top: 2px;
+    @apply z-50 pointer-events-none rounded-24 border-2 border-neutral-600 mr-16 h-24 w-24 flex justify-center items-center outline-2 outline outline-transparent outline-offset-4 transition-all;
+  }
+
+  &.has-error .radio-span {
+    @apply border-danger-500 bg-danger-50;
+  }
+
+  @media (max-width: theme('screens.md')) {
+    input {
+      @apply left-0 #{!important};
+      top: 6px !important;
+    }
+
+    label {
+      margin-top: 4px;
+    }
+
+    .radio-span {
+      @apply w-32 h-32 min-w-[theme('spacing[32]')] #{!important};
+      margin-left: 6px;
+    }
+  }
+}

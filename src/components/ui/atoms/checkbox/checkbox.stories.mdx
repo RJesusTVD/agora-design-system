@@ -40,16 +40,20 @@ import { Checkbox } from '@ama/agora-design-system';
 ```tsx
 import { Checkbox } from '@ama/agora-design-system';
 
-const CheckboxCustomChildNode = () => {
-  return (
-    <div>
-      <p>Lorem ipsum dolor sit amet</p>
-    </div>
-  );
-};
-
 <Checkbox id="form-checkbox" name="input-name">
-  <CheckboxCustomChildNode />
+  <div>
+    <p>
+      I declare that I read and accept uncondicionally{' '}
+      <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+        Terms
+      </a>
+      and
+      <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+        Conditions
+      </a>
+      of Agora Design System.
+    </p>
+  </div>
 </Checkbox>;
 ```
 
