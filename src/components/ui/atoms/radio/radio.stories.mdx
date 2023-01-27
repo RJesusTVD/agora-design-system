@@ -32,15 +32,21 @@ import { Radio } from '@ama/agora-design-system';
 ```tsx
 import { Radio } from '@ama/agora-design-system';
 
-const RadioCustomChildNode = () => {
-  return (
-    <div>
-      <p>Lorem ipsum dolor sit amet</p>
-    </div>
-  );
-};
-
-<Radio id="form-radio" name="input-name" child={<RadioCustomChildNode />} />;
+<Radio id="form-radio" name="input-name">
+  <div>
+    <p>
+      I declare that I read and accept uncondicionally{' '}
+      <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+        Terms
+      </a>
+      and
+      <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+        Conditions
+      </a>
+      of Agora Design System.
+    </p>
+  </div>
+</Radio>;
 ```
 
 <h2 className="text-headings-l-strong my-8">Radio Error.</h2>

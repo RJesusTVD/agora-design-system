@@ -20,19 +20,23 @@ export const RadioDefault = (args: RadioProps) => {
 };
 RadioDefault.storyName = 'Radio';
 
-const RadioChildrenNode = () => {
-  return (
-    <div>
-      <p>Lorem ipsum dolor sit amet</p>
-    </div>
-  );
-};
-
 export const RadioChildren = (args: RadioProps) => {
   return (
     <div className="p-16">
       <Radio {...args} id="form-radio" name="input-name">
-        <RadioChildrenNode />
+        <div>
+          <p>
+            I declare that I read and accept uncondicionally{' '}
+            <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+              Terms
+            </a>{' '}
+            and{' '}
+            <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+              Conditions
+            </a>{' '}
+            of Agora Design System.
+          </p>
+        </div>
       </Radio>
     </div>
   );

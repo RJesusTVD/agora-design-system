@@ -20,19 +20,23 @@ export const CheckboxDefault = (args: CheckboxProps) => {
 };
 CheckboxDefault.storyName = 'Checkbox';
 
-const CheckboxChildrenNode = () => {
-  return (
-    <div>
-      <p>Lorem ipsum dolor sit amet</p>
-    </div>
-  );
-};
-
 export const CheckboxChildren = (args: CheckboxProps) => {
   return (
     <div className="p-16">
       <Checkbox {...args} id="form-checkbox" name="input-name">
-        <CheckboxChildrenNode />
+        <div>
+          <p>
+            I declare that I read and accept uncondicionally{' '}
+            <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+              Terms
+            </a>{' '}
+            and{' '}
+            <a target="_blank" className="underline text-primary-600" href="http://google.com" rel="noreferrer">
+              Conditions
+            </a>{' '}
+            of Agora Design System.
+          </p>
+        </div>
       </Checkbox>
     </div>
   );
