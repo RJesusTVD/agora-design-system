@@ -92,8 +92,7 @@
     }
 
     .radio-span {
-      @apply w-32 h-32 #{!important};
-      min-width: 32px;
+      @apply w-32 h-32 min-w-[theme('spacing[32]')] #{!important};
       margin-left: 6px;
     }
   }
