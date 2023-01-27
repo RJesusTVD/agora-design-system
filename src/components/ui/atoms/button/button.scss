@@ -93,7 +93,7 @@
   // Global styles for ButtonLinks
   &[class*=' btn-link'] {
     // apply for all ButtonLink
-    @apply rounded-none px-0 py-8 #{!important};
+    @apply px-0 py-8 #{!important};
 
     @apply relative no-underline;
 
@@ -123,6 +123,14 @@
     }
   }
 
+  &:focus {
+    @apply outline outline-2 outline-primary-600 outline-offset-2;
+  }
+
+  &:not(:focus) {
+    @apply outline-none;
+  }
+
   // avoid underline decoration when Icon present
   &[class*=' btn-with-icon'] {
     @apply no-underline #{!important};
@@ -134,15 +142,13 @@
 
   // Sizes & Spacing
   &-default {
-    @apply px-16;
+    @apply px-16 py-16;
 
     span.children-wrapper {
       @apply text-interaction-button-m;
     }
 
     min-height: 60px;
-    padding-top: 16px;
-    padding-bottom: 16px;
 
     &.is-icon-only {
       @apply p-0 #{!important};
@@ -155,15 +161,13 @@
   }
 
   &-small {
-    @apply px-16;
+    @apply px-16 py-8;
 
     span.children-wrapper {
       @apply text-interaction-button-s;
     }
 
     min-height: 44px;
-    padding-top: 8px;
-    padding-bottom: 8px;
 
     &.is-icon-only {
       @apply p-0 #{!important};
