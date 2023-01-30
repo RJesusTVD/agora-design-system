@@ -1,29 +1,35 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import { stringToBoolean } from '../../../utils';
 import { Icon } from '../icon';
 import './input_textarea.scss';
 
 export interface InputTextAreaProps extends React.ComponentPropsWithRef<'textarea'> {
   /**
+   * Input ID.
+   * @default ''
+   */
+  id: string;
+  /**
    * Input descriptive label.
    * @default 'Input Label'
    */
-  label: string;
+  label?: string;
   /**
    * Decides if display/hide label.
    * @default false
    */
-  hideLabel: boolean | 'true' | 'false';
+  hideLabel?: boolean | 'true' | 'false';
   /**
    * Text informative displayed below input text
    * @default null
    */
-  feedbackText: string;
+  feedbackText?: string;
   /**
    * Intial value
    * @default null
    */
-  initialValue: string;
+  initialValue?: string;
   /**
    * Indicates the feedback state of feedback text.
    * This param will change the left feedback icon and dye it.
@@ -33,17 +39,17 @@ export interface InputTextAreaProps extends React.ComponentPropsWithRef<'textare
    * Hightlight the input indicating some error
    * @default false
    */
-  hasError: boolean | 'true' | 'false';
+  hasError?: boolean | 'true' | 'false';
   /**
    * Indicates that this input char length limitation.
    * @default -1
    */
-  maxChars: number;
+  maxChars?: number;
   /**
    * Allow to show/hide the char counter on right button corner.
    * @default false
    */
-  showCharCounter: boolean | 'true' | 'false';
+  showCharCounter?: boolean | 'true' | 'false';
 }
 
 export const InputTextArea: React.FC<InputTextAreaProps> = ({
@@ -64,7 +70,7 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
 }) => {
   const { onChange } = props;
 
-  const [currentValue, setCurrentValue] = useState(initialValue);
+  const [currentValue, setCurrentValue] = useState(initialValue ?? '');
 
   /**
    * Local onChange event handler. This functions allow us
@@ -97,13 +103,13 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
       // main wrapper class
       inputWrapperClasses: classNames('agora-input-textarea--wrapper', {
         'input-disabled': disabled,
-        'input-has-error': hasError
+        'input-has-error': stringToBoolean(hasError)
       }),
       // classes for above input sections [label and hint icon]
       labelSectionClasses: classNames('input-label-wrapper', 'flex', 'items-end', {
-        'mb-8': label && !hideLabel,
-        'justify-end': !label || hideLabel,
-        'justify-between': label && !hideLabel
+        'mb-8': label && !stringToBoolean(hideLabel),
+        'justify-end': !label || stringToBoolean(hideLabel),
+        'justify-between': label && !stringToBoolean(hideLabel)
       }),
       // text input component classes
       inputClasses: classNames(
@@ -159,7 +165,7 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
           )}
           <p className="text-type-specs-caption text-neutral-700">{feedbackText}</p>
         </div>
-        {showCharCounter && (
+        {stringToBoolean(showCharCounter) && (
           <div className="text-type-specs-caption text-neutral-700 mt-8 pl-16">
             {currentValue.length} {maxChars !== -1 ? `/${maxChars}` : ''}
           </div>
