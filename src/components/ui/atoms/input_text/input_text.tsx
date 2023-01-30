@@ -1,34 +1,40 @@
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
+import { stringToBoolean } from '../../../utils';
 import { Icon } from '../icon';
 import './input_text.scss';
 
 export interface InputTextProps extends React.ComponentPropsWithRef<'input'> {
   /**
+   * Input ID.
+   * @default ''
+   */
+  id: string;
+  /**
    * Input descriptive label.
    * @default 'Input Label'
    */
-  label: string;
+  label?: string;
   /**
    * Decides if display/hide label.
    * @default false
    */
-  hideLabel: boolean | 'true' | 'false';
+  hideLabel?: boolean | 'true' | 'false';
   /**
    * Text informative displayed below input text
    * @default null
    */
-  feedbackText: string;
+  feedbackText?: string;
   /**
    * Icon displayed inside the Input Text on left center corner
    * @default null
    */
-  leadingIcon: string;
+  leadingIcon?: string;
   /**
    * Intial value
    * @default null
    */
-  initialValue: string;
+  initialValue?: string;
   /**
    * Indicates the feedback state of feedback text.
    * This param will change the left feedback icon and dye it.
@@ -38,17 +44,17 @@ export interface InputTextProps extends React.ComponentPropsWithRef<'input'> {
    * Hightlight the input indicating some error
    * @default false
    */
-  hasError: boolean | 'true' | 'false';
+  hasError?: boolean | 'true' | 'false';
   /**
    * Indicates that this input char length limitation.
    * @default -1
    */
-  maxChars: number;
+  maxChars?: number;
   /**
    * Allow to show/hide the char counter on right button corner.
    * @default false
    */
-  showCharCounter: boolean | 'true' | 'false';
+  showCharCounter?: boolean | 'true' | 'false';
 }
 
 export const InputText: React.FC<InputTextProps> = ({
@@ -71,7 +77,7 @@ export const InputText: React.FC<InputTextProps> = ({
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [currentValue, setCurrentValue] = useState(initialValue);
+  const [currentValue, setCurrentValue] = useState(initialValue ?? '');
 
   /**
    * Local onChange event handler. This functions allow us
@@ -104,13 +110,13 @@ export const InputText: React.FC<InputTextProps> = ({
       // main wrapper class
       inputWrapperClasses: classNames('agora-input-text--wrapper', {
         'input-disabled': disabled,
-        'input-has-error': hasError
+        'input-has-error': stringToBoolean(hasError)
       }),
       // classes for above input sections [label and hint icon]
       labelSectionClasses: classNames('input-label-wrapper', 'flex', 'items-end', {
-        'mb-8': label && !hideLabel,
-        'justify-end': !label || hideLabel,
-        'justify-between': label && !hideLabel
+        'mb-8': label && !stringToBoolean(hideLabel),
+        'justify-end': !label || stringToBoolean(hideLabel),
+        'justify-between': label && !stringToBoolean(hideLabel)
       }),
       // text input component classes
       inputClasses: classNames(
@@ -179,7 +185,7 @@ export const InputText: React.FC<InputTextProps> = ({
           )}
           <p className="text-type-specs-caption text-neutral-700">{feedbackText}</p>
         </div>
-        {showCharCounter && (
+        {stringToBoolean(showCharCounter) && (
           <div className="text-type-specs-caption text-neutral-700 mt-8 pl-16">
             {currentValue.length} {maxChars !== -1 ? `/${maxChars}` : ''}
           </div>

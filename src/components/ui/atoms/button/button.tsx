@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Icon } from '../icon';
 import { ButtonAppearence, ButtonSizes, ButtonVariant, IconWrapperType } from './types';
 import './button.scss';
+import { stringToBoolean } from '../../../utils';
 
 /**
  *
@@ -29,12 +30,12 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
    * The Button appearence.
    * @defaultValue 'solid'
    */
-  appearence: ButtonAppearence;
+  appearence?: ButtonAppearence;
   /**
    * The variant of the button.
    * @defaultValue 'primary'
    */
-  variant: ButtonVariant;
+  variant?: ButtonVariant;
   /**
    * Indicates if this Button should be fluid.
    * @defaultValue 'false'
@@ -127,7 +128,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   let defaultIcon = '';
   let defaultAnimation = '';
-  if (hasIcon || iconOnly) {
+  if (stringToBoolean(hasIcon) || stringToBoolean(iconOnly)) {
     /**
      * Detects default icon in case hasIcon/iconOnly params be true.
      * @type string
@@ -143,9 +144,9 @@ export const Button: React.FC<ButtonProps> = ({
     `btn btn-${size} btn-${appearence}--${variant}`,
     {
       [`animate-icon--${defaultAnimation}`]: defaultAnimation !== '',
-      [`btn-with-icon--${iconPosition}`]: hasIcon,
-      'btn-block': fullWidth,
-      'is-icon-only': iconOnly
+      [`btn-with-icon--${iconPosition}`]: stringToBoolean(hasIcon),
+      'btn-block': stringToBoolean(fullWidth),
+      'is-icon-only': stringToBoolean(iconOnly)
     },
     className
   );
