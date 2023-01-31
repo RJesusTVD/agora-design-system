@@ -1,0 +1,232 @@
+@mixin dyeLineIcon($colorClass) {
+  path {
+    fill: transparent;
+    @apply #{$colorClass} #{!important};
+  }
+}
+
+@mixin dyeSolidIcon($colorClass) {
+  path {
+    stroke: transparent;
+    @apply #{$colorClass} #{!important};
+  }
+}
+
+.agora-input-number-wrapper {
+  @apply flex flex-col relative;
+
+  // normal leading icons color on default status input text
+  .input-icon {
+    &.dye-as-solid {
+      @include dyeSolidIcon('fill-neutral-900 opacity-70');
+    }
+    &.dye-as-line {
+      @include dyeLineIcon('stroke-neutral-900 opacity-70');
+    }
+  }
+  //# end
+
+  & span.hint-icon-wrapper {
+    svg {
+      path {
+        stroke: transparent;
+        @apply fill-informative-500;
+      }
+    }
+  }
+
+  .feedback-icon-wrapper {
+    &--info {
+      path {
+        stroke: transparent;
+        @apply fill-informative-500;
+      }
+    }
+
+    &--success {
+      path {
+        stroke: transparent;
+        @apply fill-success-500;
+      }
+    }
+
+    &--danger {
+      path {
+        stroke: transparent;
+        @apply fill-danger-500;
+      }
+    }
+
+    &--warning {
+      path {
+        stroke: transparent;
+        @apply fill-alert-700;
+      }
+    }
+  }
+
+  .input-leading--icon {
+    @apply right-0 bottom-24 left-16 absolute w-min;
+    top: 18px;
+  }
+
+  .input-number-controls {
+    width: 96px;
+    @apply absolute h-56 flex justify-between items-center right-8 bg-white;
+    &::before {
+      content: '';
+      @apply absolute h-24 bg-neutral-200;
+      left: 47px;
+      width: 2px;
+    }
+    button {
+      @apply flex justify-center items-center;
+      width: 44px;
+      height: 44px;
+
+      svg {
+        @apply pointer-events-none absolute transition-all ease-in-out;
+
+        &.icon-step--hover {
+          @apply translate-y-16 opacity-0 fill-primary-600;
+        }
+        &.icon-step--default {
+          @apply opacity-100 stroke-primary-600;
+        }
+      }
+
+      &:not(:disabled) {
+        &:active {
+          svg {
+            @apply scale-95;
+          }
+        }
+
+        &:hover {
+          svg {
+            @apply pointer-events-none absolute transition-all ease-in-out;
+
+            &.icon-step--hover {
+              @apply translate-y-0 opacity-100;
+            }
+            &.icon-step--default {
+              @apply -translate-y-16 opacity-0;
+            }
+          }
+        }
+      }
+      &:disabled {
+        @apply opacity-50 cursor-not-allowed;
+      }
+    }
+  }
+
+  &.is-hovered input:not(:disabled):not(:read-only):not(:focus) {
+    @apply border-neutral-800 border-2;
+  }
+
+  .agora-input-number {
+    @apply w-full border-2 border-neutral-300 outline-none rounded-4 px-16 transition-all ease-in-out text-interaction-input-text text-neutral-900;
+    height: 60px;
+    padding-right: 100px;
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &.has-leading-icon {
+      @apply pl-56;
+    }
+
+    //# mouse over not focus, not disabled, not read only
+    &:hover:not(:focus):not(:disabled):not(:read-only) {
+      @apply border-neutral-800;
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-neutral-900 opacity-100');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-neutral-900 opacity-100');
+        }
+      }
+      //# end
+    }
+
+    &:disabled ~ .input-number-controls,
+    &:read-only ~ .input-number-controls {
+      @apply pointer-events-none;
+      button svg {
+        @include dyeSolidIcon('stroke-neutral-900  opacity-50');
+      }
+    }
+
+    // disabled
+    &:disabled {
+      @apply border-neutral-100 cursor-not-allowed bg-neutral-100 #{!important};
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-neutral-900  opacity-70');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-neutral-900  opacity-70');
+        }
+      }
+      //# end
+    }
+
+    // filled
+    &.has-value:not(:read-only) {
+      @apply border-neutral-500;
+    }
+
+    &:not(:focus) {
+      @apply outline-0;
+    }
+    // focus
+    &:not(:disabled):focus {
+      @apply border-primary-600 outline outline-2 outline-offset-2 outline-primary-600;
+
+      // normal leading icons color on default status input text
+      & ~ .input-icon {
+        &.dye-as-solid {
+          @include dyeSolidIcon('fill-primary-600 opacity-100');
+        }
+        &.dye-as-line {
+          @include dyeLineIcon('stroke-primary-600  opacity-100');
+        }
+      }
+      //# end
+    }
+  }
+
+  &.input-has-error {
+    .input-feedback {
+      path {
+        stroke: transparent;
+        @apply fill-danger-500 #{!important};
+      }
+    }
+    .input-number-controls {
+      @apply bg-danger-50;
+      button svg {
+        &.icon-step--default {
+          @include dyeLineIcon('stroke-neutral-900');
+        }
+        &.icon-step--hover {
+          @include dyeSolidIcon('fill-neutral-900');
+        }
+      }
+    }
+    // has error
+    .agora-input-number:not(:disabled):not(:read-only) {
+      @apply bg-danger-50 border-danger-500 #{!important};
+    }
+  }
+}
