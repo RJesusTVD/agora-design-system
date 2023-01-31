@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs';
+import InputNumber from './input_number.tsx';
+
+<Meta title="Components/Atoms/Input Number/Input Number Docs" />
+
+<h1 className="mb-32 text-headings-lg-strong">
+  <u>Input Number</u>
+  <h2 className="text-headings-l-strong mb-8">Description </h2>
+  <p className="fs-16">Specifies a single line input field where the user can enter numeric values.</p>
+</h1>
+
+<h2 className="text-headings-l-strong my-8">Component usage</h2>
+<h2 className="text-headings-l-strong my-8">Input Number.</h2>
+
+```tsx
+import { InputNumber } from '@ama/agora-design-system';
+
+<InputNumber label="Label" placeholder="Placeholder" increaseButtonAltText="Increase value" decreaseButtonAltText="Decrease value" />;
+```
+
+<h2 className="text-headings-l-strong my-8">Input Number Optional.</h2>
+
+```tsx
+import { InputNumber } from '@ama/agora-design-system';
+
+<InputNumber
+  label="Label"
+  placeholder="Placeholder"
+  increaseButtonAltText="Increase value"
+  decreaseButtonAltText="Decrease value"
+  isOptional
+/>;
+```
+
+<h2 className="text-headings-l-strong my-8">Input Text Disabled.</h2>
+
+```tsx
+import { InputNumber } from '@ama/agora-design-system';
+
+<InputNumber
+  disabled
+  label="Label"
+  placeholder="Placeholder"
+  increaseButtonAltText="Increase value"
+  decreaseButtonAltText="Decrease value"
+/>;
+```
+
+<h2 className="text-headings-l-strong my-8">Input Text Read Only.</h2>
+
+```tsx
+import { InputNumber } from '@ama/agora-design-system';
+
+<InputNumber
+  readOnly
+  label="Label"
+  placeholder="Placeholder"
+  increaseButtonAltText="Increase value"
+  decreaseButtonAltText="Decrease value"
+/>;
+```
+
+<h2 className="text-headings-l-strong my-8">Input Text Error.</h2>
+
+```tsx
+import { InputNumber } from '@ama/agora-design-system';
+
+<InputNumber
+  hasError
+  label="Label"
+  placeholder="Placeholder"
+  increaseButtonAltText="Increase value"
+  decreaseButtonAltText="Decrease value"
+/>;
+```
