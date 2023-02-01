@@ -1,6 +1,6 @@
 import { ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Button } from './button';
+import { Button, ButtonProps } from './button';
 import { argTypes, parameters } from './button.csf';
 
 export default {
@@ -25,8 +25,8 @@ export default {
  * @param args
  * @returns
  */
-export const ButtonSolid = (args) => {
-  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'];
+export const ButtonSolid = (args: ButtonProps) => {
+  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'] as const;
   return (
     <div className="flex justify-between p-16">
       {btnVariantOptions.map((variant, index) => (
@@ -42,8 +42,8 @@ ButtonSolid.storyName = 'Button Solid';
  * @param args
  * @returns
  */
-export const ButtonOutline = (args) => {
-  const btnVariantOptions = ['primary', 'danger', 'success', 'warning', 'neutral', 'white'];
+export const ButtonOutline = (args: ButtonProps) => {
+  const btnVariantOptions = ['primary', 'danger', 'success', 'warning', 'neutral', 'white'] as const;
   return (
     <div className="flex justify-between items-center  p-16">
       {btnVariantOptions.map((variant, index) => (
@@ -61,8 +61,8 @@ ButtonOutline.storyName = 'Button Outline';
  * @param args B
  * @returns
  */
-export const ButtonLink = (args) => {
-  const btnVariantOptions = ['primary', 'danger', 'success', 'warning', 'neutral', 'white'];
+export const ButtonLink = (args: ButtonProps) => {
+  const btnVariantOptions = ['primary', 'danger', 'success', 'warning', 'neutral', 'white'] as const;
   return (
     <div className="flex justify-between items-center  p-16">
       {btnVariantOptions.map((variant, index) => (
@@ -80,8 +80,8 @@ ButtonLink.storyName = 'Button Link';
  * @param args B
  * @returns
  */
-export const ButtonDisabled = (args) => {
-  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'];
+export const ButtonDisabled = (args: ButtonProps) => {
+  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'] as const;
   return (
     <div className="flex justify-between  p-16">
       {btnVariantOptions.map((variant, index) => (
@@ -97,8 +97,8 @@ ButtonDisabled.storyName = 'Button Disabled';
  * @param args B
  * @returns
  */
-export const ButtonFullwidth = (args) => {
-  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'];
+export const ButtonFullwidth = (args: ButtonProps) => {
+  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'] as const;
   return btnVariantOptions.map((variant, index) => (
     <div key={index} className="p-16">
       <Button {...args} variant={variant} appearence="solid" fullWidth />
@@ -112,8 +112,8 @@ ButtonFullwidth.storyName = 'Button Full Width';
  * @param args B
  * @returns
  */
-export const ButtonFullIconOnly = (args) => {
-  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'];
+export const ButtonFullIconOnly = (args: ButtonProps) => {
+  const btnVariantOptions = ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral', 'white'] as const;
   return (
     <div className="flex justify-between  p-16">
       {btnVariantOptions.map((variant, index) => (
