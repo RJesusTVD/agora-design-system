@@ -93,7 +93,7 @@
   // Global styles for ButtonLinks
   &[class*=' btn-link'] {
     // apply for all ButtonLink
-    @apply px-0 py-8 #{!important};
+    @apply px-16 py-8 #{!important};
 
     @apply relative no-underline;
 
@@ -110,7 +110,8 @@
     }
 
     &:not([class*='btn-with-icon'])::after {
-      @apply left-0 absolute  w-full transition-all ease-in-out;
+      @apply left-16 absolute  transition-all ease-in-out;
+      width: calc(100% - 32px);
       height: 1px;
       content: '';
       top: 43px;
