@@ -157,9 +157,9 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
           {feedbackText && (
             <span className={`mr-8 feedback-icon-wrapper feedback-icon-wrapper--${feedbackState}`}>
               {!hasError ? (
-                <Icon icon={feedbackStateIconsMap[feedbackState]} size="sm" alt={feedbackText} />
+                <Icon icon={feedbackStateIconsMap[feedbackState]} size="s" alt={feedbackText} />
               ) : (
-                <Icon icon="agora-solid-danger" size="sm" alt={feedbackText} />
+                <Icon icon="agora-solid-danger" size="s" alt={feedbackText} />
               )}
             </span>
           )}
