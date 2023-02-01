@@ -14,6 +14,14 @@ export const argTypes = {
     description: 'Label to display above input. ',
     defaultValue: ''
   },
+  ariaLabel: {
+    type: { name: 'string', required: false },
+    description: 'Descritive attribute that labels the checkbox in terms of accessibility',
+    defaultValue: '',
+    control: {
+      type: 'text'
+    }
+  },
   hideLabel: {
     type: { name: 'boolean', required: false },
     description: 'Whether to show/hide input field label',
@@ -102,5 +110,10 @@ export const argTypes = {
     type: { name: 'number', required: false },
     description: 'Max',
     defaultValue: -1
+  },
+  isOptional: {
+    type: { name: 'boolean', required: false },
+    description: 'Decides if this field could be optional',
+    defaultValue: false
   }
 };

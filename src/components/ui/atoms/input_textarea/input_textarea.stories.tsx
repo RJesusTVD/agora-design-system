@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from '@storybook/react';
 import React from 'react';
-import { InputTextArea } from './input_textarea';
+import { InputTextArea, InputTextAreaProps } from './input_textarea';
 import { argTypes } from './input_textarea.csf';
 
 export default {
@@ -11,22 +11,32 @@ export default {
   }
 } as ComponentMeta<typeof InputTextArea>;
 
-export const InputTextComp: Story<any> = (args) => <InputTextArea {...args} id="input-text" />;
+export const InputTextComp: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" />
+  </div>
+);
 InputTextComp.storyName = 'Input Text Area';
 InputTextComp.args = {
   label: 'Label',
   placeholder: 'Placeholder'
 };
 
-export const InputTextFeedbackInfo: Story<any> = (args) => <InputTextArea {...args} id="input-text" feedbackText="Some info feedback" />;
+export const InputTextFeedbackInfo: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" feedbackText="Some info feedback" />
+  </div>
+);
 InputTextFeedbackInfo.storyName = 'Input Text Area Feedback Info';
 InputTextFeedbackInfo.args = {
   label: 'Label',
   placeholder: 'Placeholder'
 };
 
-export const InputTextFeedbackSuccess: Story<any> = (args) => (
-  <InputTextArea {...args} id="input-text" feedbackText="Some success feedback" feedbackState="success" />
+export const InputTextFeedbackSuccess: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" feedbackText="Some success feedback" feedbackState="success" />
+  </div>
 );
 InputTextFeedbackSuccess.storyName = 'Input Text Area Feedback Success';
 InputTextFeedbackSuccess.args = {
@@ -34,8 +44,10 @@ InputTextFeedbackSuccess.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextFeedbackWarning: Story<any> = (args) => (
-  <InputTextArea {...args} id="input-text" feedbackText="Some warning feedback" feedbackState="warning" />
+export const InputTextFeedbackWarning: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" feedbackText="Some warning feedback" feedbackState="warning" />
+  </div>
 );
 InputTextFeedbackWarning.storyName = 'Input Text Area Feedback Warning';
 InputTextFeedbackWarning.args = {
@@ -43,8 +55,10 @@ InputTextFeedbackWarning.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextFeedbackDanger: Story<any> = (args) => (
-  <InputTextArea {...args} id="input-text" feedbackText="Some danger feedback" feedbackState="danger" />
+export const InputTextFeedbackDanger: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" feedbackText="Some danger feedback" feedbackState="danger" />
+  </div>
 );
 InputTextFeedbackDanger.storyName = 'Input Text Area Feedback Danger';
 InputTextFeedbackDanger.args = {
@@ -52,7 +66,11 @@ InputTextFeedbackDanger.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextCompHasReadOnly: Story<any> = (args) => <InputTextArea {...args} id="input-text" />;
+export const InputTextCompHasReadOnly: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" />
+  </div>
+);
 InputTextCompHasReadOnly.storyName = 'Input Text Area Read Only';
 InputTextCompHasReadOnly.args = {
   readOnly: true,
@@ -60,7 +78,11 @@ InputTextCompHasReadOnly.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextCompDisabled: Story<any> = (args) => <InputTextArea {...args} id="input-text" />;
+export const InputTextCompDisabled: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" />
+  </div>
+);
 InputTextCompDisabled.storyName = 'Input Text Area Disabled';
 InputTextCompDisabled.args = {
   disabled: true,
@@ -68,7 +90,11 @@ InputTextCompDisabled.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextCompHasError: Story<any> = (args) => <InputTextArea {...args} id="input-text" />;
+export const InputTextCompHasError: Story<any> = (args: InputTextAreaProps) => (
+  <div className="p-8">
+    <InputTextArea {...args} id="input-text" />
+  </div>
+);
 InputTextCompHasError.storyName = 'Input Text Area Error';
 InputTextCompHasError.args = {
   hasError: true,
