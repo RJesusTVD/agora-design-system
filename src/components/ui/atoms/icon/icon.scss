@@ -1,33 +1,43 @@
 @use '../../../../styles/globals.scss';
 
 @layer components {
-  .icon,
-  .icon-default {
-    width: theme('spacing.24');
-    height: theme('spacing.24');
-
+  .icon {
     svg {
       fill: theme('colors.black');
     }
-
-    &.icon-sm {
+    &.icon-xs {
       width: theme('spacing.16');
       height: theme('spacing.16');
     }
 
-    &.icon-md {
+    &.icon-s {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.icon-m {
+      width: theme('spacing.24');
+      height: theme('spacing.24');
+    }
+
+    &.icon-l {
       width: theme('spacing.32');
       height: theme('spacing.32');
     }
 
-    &.icon-lg {
+    &.icon-xl {
       width: theme('spacing.40');
       height: theme('spacing.40');
     }
 
-    &.icon-xl {
-      width: theme('spacing.48');
-      height: theme('spacing.48');
+    &.icon-xxl {
+      width: 58px;
+      height: 58px;
+    }
+
+    &.icon-xxxl {
+      width: theme('spacing.64');
+      height: theme('spacing.64');
     }
   }
 }

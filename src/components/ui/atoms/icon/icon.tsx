@@ -41,11 +41,16 @@ export const clearIconCache = (iconName?: IconName) => {
   return deletedItems;
 };
 
+/**
+ * Icon allowed sizes
+ */
+export type IconSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
+
 export interface IconProps extends SVGProps<SVGSVGElement> {
   /** Additional classes to use in icon component */
   className?: string;
-  /** Predefined icon dimensions. Possible values: 'xl' | 'lg' | '' | 'sm' */
-  size?: 'default' | 'xl' | 'lg' | 'md' | 'sm';
+  /** Predefined icon dimensions. Possible values: 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' */
+  size?: IconSize;
   /** Icon name to be used */
   icon: string;
   /** To use padding in icon container */
@@ -60,11 +65,11 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
   ariaHidden?: boolean | 'true' | 'false';
 }
 
-export const Icon: FC<IconProps> = ({ size = 'default', icon = '', alt, className, onIconLoad, onIconLoadError, ariaHidden, ...props }) => {
+export const Icon: FC<IconProps> = ({ size = 'md', icon = '', alt, className, onIconLoad, onIconLoadError, ariaHidden, ...props }) => {
   const [IconComponent, setCurrentIcon] = useState<FC<SVGProps<SVGSVGElement>>>(iconsCache[icon]);
 
   const classes = classNames('icon', className, {
-    [`icon-${size}`]: size
+    [`icon-${size?.toLowerCase()}`]: size
   });
 
   useEffect(() => {

@@ -7,9 +7,9 @@ export default {
   title: 'Components/Atoms/Icon'
 } as ComponentMeta<typeof Icon>;
 
-export const Size: Story<IconProps> = ({ icon }: IconProps) => {
-  const dimensions = ['sm', 'default', 'md', 'lg', 'xl'] as const;
+const dimensions = ['xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'] as const;
 
+export const Size: Story<IconProps> = ({ icon }: IconProps) => {
   return (
     <div className="bg-neutral-100">
       {dimensions.map((size) => (
@@ -30,7 +30,7 @@ Size.argTypes = {
 };
 
 export const ExternalImage: Story<IconProps> = ({ icon, size }: IconProps) => {
-  return <Icon icon={icon || 'https://picsum.photos/50'} size={size || 'md'} ariaHidden />;
+  return <Icon icon={icon || 'https://picsum.photos/50'} size={size || 'm'} ariaHidden />;
 };
 ExternalImage.storyName = 'External Image';
 ExternalImage.argTypes = {
@@ -40,9 +40,10 @@ ExternalImage.argTypes = {
   },
   size: {
     description: 'Icon size to be used',
+    defaultValue: 'm',
     control: {
-      type: 'inline-radio',
-      options: ['default', 'xl', 'lg', 'md', 'sm']
+      type: 'select',
+      options: dimensions.map((i: string) => i.toUpperCase())
     }
   }
 };
@@ -52,7 +53,7 @@ export const IconList: Story<IconProps> = ({ size }: IconProps) => {
     <div className="grid md:grid-cols-3 bg-neutral-100">
       {allIcons.map((icon) => (
         <div className="flex items-center" key={icon}>
-          <Icon icon={icon} size={size || 'md'} ariaHidden />
+          <Icon icon={icon} size={size || 'm'} ariaHidden />
           <span className="pl-8">{icon}</span>
         </div>
       ))}
@@ -63,9 +64,10 @@ IconList.storyName = 'List';
 IconList.argTypes = {
   size: {
     description: 'Icon size to be used',
+    defaultValue: 'm',
     control: {
-      type: 'inline-radio',
-      options: ['default', 'xl', 'lg', 'md', 'sm']
+      type: 'select',
+      options: dimensions.map((i: string) => i.toUpperCase())
     }
   }
 };
