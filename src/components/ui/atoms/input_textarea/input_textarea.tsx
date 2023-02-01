@@ -16,6 +16,11 @@ export interface InputTextAreaProps extends React.ComponentPropsWithRef<'textare
    */
   label?: string;
   /**
+   * Descritive attribute that labels the checkbox in terms of accessibility
+   * @default null
+   */
+  ariaLabel?: string;
+  /**
    * Decides if display/hide label.
    * @default false
    */
@@ -50,10 +55,16 @@ export interface InputTextAreaProps extends React.ComponentPropsWithRef<'textare
    * @default false
    */
   showCharCounter?: boolean | 'true' | 'false';
+  /**
+   * Allow to show/hide the char counter on right button corner.
+   * @default false
+   */
+  isOptional?: boolean | 'true' | 'false';
 }
 
 export const InputTextArea: React.FC<InputTextAreaProps> = ({
   label = 'Input Label',
+  ariaLabel,
   hideLabel,
   hasError,
   maxChars = -1,
@@ -64,11 +75,14 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
   feedbackState = 'info',
   initialValue,
   className = '',
+  isOptional,
   rows = 3,
   id,
   ...props
 }) => {
-  const { onChange } = props;
+  const propsClone = { ...props };
+
+  const { onChange } = propsClone;
 
   const [currentValue, setCurrentValue] = useState(initialValue ?? '');
 
@@ -79,7 +93,9 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
    */
   const handleChangeEvent = (evt) => {
     const { value } = evt.currentTarget;
-    if (maxChars === -1 || value?.length <= maxChars) setCurrentValue(value);
+    if (maxChars === -1 || value?.length <= maxChars) {
+      setCurrentValue(value);
+    }
     onChange?.(evt);
   };
 
@@ -99,7 +115,7 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
    * @returns Object
    */
   const inputClassBuilder = () => {
-    const classes = {
+    return {
       // main wrapper class
       inputWrapperClasses: classNames('agora-input-textarea--wrapper', {
         'input-disabled': disabled,
@@ -121,16 +137,21 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
         className
       )
     };
-    return classes;
   };
 
   const { inputWrapperClasses, labelSectionClasses, inputClasses } = inputClassBuilder();
+
+  if (stringToBoolean(isOptional)) {
+    delete propsClone.required;
+  } else {
+    propsClone.required = true;
+  }
 
   return (
     <div className={inputWrapperClasses}>
       {/* Label & Hint Text Wrapper */}
       <div className={labelSectionClasses}>
-        <label hidden={hideLabel && hideLabel !== 'true'} htmlFor={id} className="text-primary-900 text-interaction-input-label">
+        <label hidden={stringToBoolean(hideLabel)} htmlFor={id} className="text-primary-900 text-interaction-input-label">
           {label}
         </label>
       </div>
@@ -144,10 +165,11 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
           className={inputClasses}
           disabled={disabled}
           readOnly={readOnly}
-          aria-invalid={hasError}
-          aria-label={label}
+          aria-invalid={stringToBoolean(hasError)}
+          aria-label={ariaLabel || label}
+          aria-required={!stringToBoolean(isOptional)}
           onChange={handleChangeEvent}
-          {...props}
+          {...propsClone}
         />
       </div>
 
@@ -156,7 +178,7 @@ export const InputTextArea: React.FC<InputTextAreaProps> = ({
         <div className="flex items-center input-feedback mt-8">
           {feedbackText && (
             <span className={`mr-8 feedback-icon-wrapper feedback-icon-wrapper--${feedbackState}`}>
-              {!hasError ? (
+              {!stringToBoolean(hasError) ? (
                 <Icon icon={feedbackStateIconsMap[feedbackState]} size="s" alt={feedbackText} />
               ) : (
                 <Icon icon="agora-solid-danger" size="s" alt={feedbackText} />

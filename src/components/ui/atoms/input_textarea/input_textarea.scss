@@ -71,7 +71,7 @@
   }
 
   .agora-input-textarea {
-    @apply border-2 border-secondary-500 outline-none rounded-4 p-16 transition-all ease-in-out text-interaction-input-text pr-48 text-neutral-900;
+    @apply border-2 border-neutral-300 outline-none rounded-4 p-16 transition-all ease-in-out text-interaction-input-text text-neutral-900;
 
     &.has-leading-icon {
       @apply pl-56;
@@ -92,6 +92,7 @@
       //# end
     }
 
+    // disabled
     &:disabled {
       @apply border-none border-neutral-800 cursor-not-allowed bg-neutral-100 #{!important};
 
@@ -107,12 +108,16 @@
       //# end
     }
 
-    &:not(:placeholder-shown) {
+    &.has-value {
       @apply border-neutral-500;
     }
 
+    &:not(:focus) {
+      @apply outline-0;
+    }
+
     &:not(:disabled):focus {
-      @apply border-primary-600 border-2 pr-48;
+      @apply border-primary-600 outline outline-2 outline-offset-2 outline-primary-600;
 
       // normal leading icons color on default status input text
       & ~ .input-icon {
