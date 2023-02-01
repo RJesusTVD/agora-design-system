@@ -70,20 +70,15 @@
     top: 18px;
   }
 
-  .input-btn--clear {
-    @apply bottom-24 absolute cursor-pointer invisible flex justify-center items-center right-8 top-8;
-    width: 44px;
-    height: 44px;
-  }
-
   .agora-input-text {
-    @apply border-2 border-secondary-500 outline-none rounded-4 px-16 transition-all ease-in-out text-interaction-input-text text-neutral-900;
+    @apply border-2  border-neutral-300 outline-none rounded-4 px-16 transition-all ease-in-out text-interaction-input-text text-neutral-900;
     height: 60px;
 
     &.has-leading-icon {
       @apply pl-56;
     }
 
+    // hover
     &:hover:not(:focus):not(:disabled):not(:read-only) {
       @apply border-neutral-800;
 
@@ -99,8 +94,9 @@
       //# end
     }
 
+    // disabled
     &:disabled {
-      @apply border-none border-neutral-800 cursor-not-allowed bg-neutral-100 #{!important};
+      @apply border-neutral-100 cursor-not-allowed bg-neutral-100 #{!important};
 
       // normal leading icons color on default status input text
       & ~ .input-icon {
@@ -118,18 +114,18 @@
       @apply visible #{!important};
     }
 
-    &:not(:placeholder-shown) {
+    // has content
+    &.has-value:not(:read-only) {
       @apply border-neutral-500;
     }
 
-    &.has-value:not(:read-only) {
-      & ~ .input-btn--clear {
-        @apply visible #{!important};
-      }
+    &:not(:focus) {
+      @apply outline-0;
     }
 
+    // focus
     &:not(:disabled):focus {
-      @apply border-primary-600 border-2;
+      @apply border-primary-600 outline-2 outline  outline-primary-600 outline-offset-2;
 
       // normal leading icons color on default status input text
       & ~ .input-icon {
@@ -141,23 +137,10 @@
         }
       }
       //# end
-
-      &:read-only {
-        & ~ .input-btn--clear {
-          @apply invisible #{!important};
-        }
-      }
     }
   }
 
   &.input-has-error {
-    .input-btn--clear {
-      path {
-        fill: transparent;
-        @apply stroke-neutral-900 #{!important};
-      }
-    }
-
     .input-feedback {
       path {
         stroke: transparent;
@@ -166,7 +149,7 @@
     }
 
     .agora-input-text:not(:disabled):not(:read-only) {
-      @apply border-2 bg-danger-50 border-danger-500 #{!important};
+      @apply bg-danger-50 border-danger-500 #{!important};
     }
   }
 }
