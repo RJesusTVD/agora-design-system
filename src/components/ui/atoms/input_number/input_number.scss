@@ -159,22 +159,19 @@
 
     &:disabled ~ .input-number-controls,
     &:read-only ~ .input-number-controls {
-      @apply pointer-events-none;
+      @apply bg-transparent pointer-events-none;
       button svg {
         @include dyeSolidIcon('stroke-neutral-900  opacity-50');
       }
     }
 
     // disabled
-    &:disabled, &:read-only {
+    &:disabled,
+    &:read-only {
       @apply border-neutral-100 cursor-not-allowed bg-neutral-100 #{!important};
 
-      &:focus:read-only{
+      &:focus:read-only {
         @apply border-primary-600 #{!important}; // force border
-      }
-
-      & ~ .input-number-controls {
-        @apply bg-transparent;
       }
 
       // normal leading icons color on default status input text
