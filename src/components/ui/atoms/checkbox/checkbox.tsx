@@ -68,8 +68,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     onChange?.(evt);
   };
 
-  if (isOptional) delete propsClone.required;
-  else propsClone.required = true;
+  if (stringToBoolean(isOptional)) {
+    delete propsClone.required;
+  } else {
+    propsClone.required = true;
+  }
 
   return (
     <div className={inputWrapper}>
@@ -78,8 +81,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         id={id}
         checked={checked}
         aria-label={ariaLabel || label}
-        aria-required={!isOptional}
-        aria-invalid={hasError}
+        aria-required={!stringToBoolean(isOptional)}
+        aria-invalid={stringToBoolean(hasError)}
         onChange={handleChange}
         tabIndex={0}
         {...propsClone}
@@ -88,7 +91,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <Icon icon="agora-line-tick" ariaHidden />
       </span>
       <label className="checkbox-label text-text-m" htmlFor={id}>
-        {children || label}
+        <span>{children || label}</span>
       </label>
     </div>
   );

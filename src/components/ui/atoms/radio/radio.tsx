@@ -67,15 +67,18 @@ export const Radio: React.FC<RadioProps> = ({
     onChange?.(evt);
   };
 
-  if (isOptional) delete propsClone.required;
-  else propsClone.required = true;
+  if (stringToBoolean(isOptional)) {
+    delete propsClone.required;
+  } else {
+    propsClone.required = true;
+  }
 
   return (
     <div className={inputWrapper}>
       <input type="radio" id={id} checked={checked} aria-label={ariaLabel || label} onChange={handleChange} {...propsClone} />
       <span className="radio-span" />
       <label htmlFor={id} className="radio-label text-text-m">
-        {children || label}
+        <span>{children || label}</span>
       </label>
     </div>
   );
