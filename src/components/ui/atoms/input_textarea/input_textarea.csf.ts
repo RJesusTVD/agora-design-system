@@ -96,7 +96,7 @@ export const argTypes = {
   },
   showCharCounter: {
     type: { name: 'boolean', required: false },
-    description: 'Whether the Input is Read only.',
+    description: 'Whether show char counter.',
     table: {
       type: {
         summary: 'boolean'
@@ -108,7 +108,7 @@ export const argTypes = {
   },
   maxChars: {
     type: { name: 'number', required: false },
-    description: 'Max',
+    description: 'Maximum chars allowed.',
     defaultValue: -1
   },
   isOptional: {
