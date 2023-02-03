@@ -11,12 +11,16 @@ export default {
   }
 } as ComponentMeta<typeof InputPassword>;
 
-export const InputTextComp: Story<any> = (args: InputPasswordProps) => (
+export const InputPasswordComp: Story<any> = (args: InputPasswordProps) => (
   <div className="p-8">
     <InputPassword {...args} id="input-password" />
   </div>
 );
-InputTextComp.storyName = 'Input Password';
+InputPasswordComp.storyName = 'Input Password';
+InputPasswordComp.args = {
+  label: 'Label',
+  placeholder: 'Placeholder'
+};
 
 export const InputPasswordFeedbackInfo: Story<any> = (args: InputPasswordProps) => (
   <div className="p-8">

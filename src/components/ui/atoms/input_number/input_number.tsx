@@ -153,7 +153,7 @@ export const InputNumber: React.FC<InputNumberProps> = ({
         'agora-input-number',
         'flex-1',
         {
-          'has-leading-icon': leadingIcon,
+          'has-leading-icon': leadingIcon && leadingIcon.indexOf('agora-line') === 0, // allowing only line family icon
           'has-value': currentValue && currentValue.length > 0
         },
         className
@@ -232,12 +232,13 @@ export const InputNumber: React.FC<InputNumberProps> = ({
           {...propsClone}
         />
 
-        {/* Input Leading Icon */}
-        {leadingIcon && (
+        {/* Input Leading Icon [only line family icon] */}
+        {leadingIcon && leadingIcon.indexOf('agora-line') === 0 && (
           <div className={leadigIconWrapperClasses}>
             <Icon icon={leadingIcon} ariaHidden />
           </div>
         )}
+
         {/* Steps controls */}
         <div
           className="input-number-controls"

@@ -38,7 +38,7 @@ export const argTypes = {
   },
   placeholder: {
     type: { name: 'string', required: false },
-    description: 'Placeholder o display when no text.',
+    description: 'Placeholder to display when no text.',
     defaultValue: ''
   },
   initialValue: {
@@ -66,7 +66,7 @@ export const argTypes = {
     defaultValue: null,
     control: {
       type: 'select',
-      options: ['', ...allIcons]
+      options: ['', ...allIcons.filter((icon) => icon.indexOf('agora-line') === 0)] // allowing only line family icon
     }
   },
   hasError: {
