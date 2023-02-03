@@ -95,10 +95,11 @@
     }
 
     // disabled
-    &:disabled, &:read-only {
+    &:disabled,
+    &:read-only {
       @apply border-neutral-100 cursor-not-allowed bg-neutral-100 #{!important};
 
-      &:focus:read-only{
+      &:focus:read-only {
         @apply border-primary-600 #{!important}; // force border
       }
 
