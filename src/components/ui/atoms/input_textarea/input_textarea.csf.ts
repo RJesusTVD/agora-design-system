@@ -36,7 +36,7 @@ export const argTypes = {
   },
   placeholder: {
     type: { name: 'string', required: false },
-    description: 'Placeholder o display when no text.',
+    description: 'Placeholder to display when no text.',
     defaultValue: ''
   },
   initialValue: {
