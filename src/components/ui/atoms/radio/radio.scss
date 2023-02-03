@@ -1,34 +1,53 @@
 .agora-radio-wrapper {
   @apply flex items-start cursor-pointer relative w-fit;
   min-height: 44px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   & > .radio-label {
-    @apply text-text-m text-neutral-900 select-none cursor-pointer;
+    @apply text-neutral-900 select-none pr-16 border-2 cursor-pointer border-transparent rounded-4 transition-all ease-in-out pl-56;
+    margin-left: -50px;
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   & > label {
-    @apply cursor-pointer;
+    margin-top: -2px;
   }
 
   &.input-only {
-    @apply p-0 w-fit items-center #{!important};
+    // apply to container
+    width: 44px;
+    height: 44px;
 
     .radio-span {
-      @apply m-0;
+      margin: 10px;
     }
+
+    input {
+      @apply top-0 left-0;
+    }
+
     .radio-label {
+      @apply mt-0 pl-0;
+      width: 44px;
+      height: 44px;
+      margin-left: -44px;
+    }
+
+    .radio-label span {
       @apply hidden;
     }
   }
 
-  &:hover input:not(:disabled) ~ .radio-span {
-    @apply outline-primary-500 rounded-24;
+  &:hover input:not(:disabled) ~ .radio-label {
+    @apply border-primary-500;
   }
 
   input {
     @apply absolute opacity-0 cursor-pointer;
+    width: 44px;
+    height: 44px;
+    left: 6px;
     top: 2px;
 
     & ~ .radio-span::before {
@@ -37,10 +56,6 @@
       height: 12px;
       @apply bg-white absolute rounded-16 opacity-0;
     }
-
-    width: 44px;
-    height: 44px;
-    left: -10px;
 
     &:checked ~ .radio-span {
       @apply bg-primary-500 border-primary-500;
@@ -56,7 +71,12 @@
     }
 
     &:focus ~ .radio-span {
-      @apply outline-2 outline-offset-4 outline-primary-500 rounded-24;
+      & ~ .radio-span {
+        @apply outline-0 rounded-4;
+      }
+      & ~ .radio-label {
+        @apply border-primary-500;
+      }
     }
 
     &:disabled {
@@ -73,8 +93,8 @@
   }
 
   .radio-span {
-    margin-top: 2px;
-    @apply z-50 pointer-events-none rounded-24 border-2 border-neutral-600 mr-16 h-24 w-24 flex justify-center items-center outline-2 outline outline-transparent outline-offset-4 transition-all;
+    @apply pointer-events-none  ml-16 z-50 rounded-24 border-2 border-neutral-600 mr-8 h-24 w-24 flex justify-center items-center outline-2 outline outline-transparent outline-offset-4 transition-all;
+    margin-top: 12px;
   }
 
   &.has-error .radio-span {
@@ -82,6 +102,11 @@
   }
 
   @media (max-width: theme('screens.md')) {
+    .radio-label {
+      margin-left: -58px !important;
+      padding-left: 60px;
+    }
+
     input {
       @apply left-0 #{!important};
       top: 6px !important;
@@ -92,8 +117,22 @@
     }
 
     .radio-span {
-      @apply w-32 h-32 min-w-[theme('spacing[32]')] #{!important};
-      margin-left: 6px;
+      @apply w-32 h-32 ml-8 #{!important};
+      @apply min-w-[theme('spacing[32]')];
+    }
+
+    &.input-only {
+      input {
+        top: 0 !important;
+      }
+
+      .radio-label {
+        margin-left: -44px !important;
+      }
+
+      .radio-span {
+        margin: 6px !important;
+      }
     }
   }
 }
