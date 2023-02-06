@@ -141,6 +141,13 @@
       @apply pl-56;
     }
 
+    & ~ div {
+      button:focus,
+      button:focus-visible {
+        @apply outline-none border-2 border-primary-600 rounded-4 #{!important};
+      }
+    }
+
     //# mouse over not focus, not disabled, not read only
     &:hover:not(:focus):not(:disabled):not(:read-only) {
       @apply border-neutral-800;
