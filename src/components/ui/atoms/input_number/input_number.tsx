@@ -247,7 +247,7 @@ export const InputNumber: React.FC<InputNumberProps> = ({
           onMouseLeave={() => handleMouseHouvering(false)}
         >
           <button
-            disabled={min === parseFloat(currentValue ?? '0')}
+            disabled={min === parseFloat(currentValue ?? '0') || disabled || readOnly}
             type="button"
             onClick={handleStepDown}
             aria-label={decreaseButtonAltText}
@@ -256,7 +256,7 @@ export const InputNumber: React.FC<InputNumberProps> = ({
             <Icon icon="agora-solid-minus-circle" ariaHidden className="icon-step icon-step--hover" />
           </button>
           <button
-            disabled={max === parseFloat(currentValue ?? '0')}
+            disabled={max === parseFloat(currentValue ?? '0') || disabled || readOnly}
             type="button"
             onClick={handleStepUp}
             aria-label={increaseButtonAltText}
