@@ -34,7 +34,7 @@ InputPasswordFeedbackInfo.args = {
 };
 
 export const InputPasswordFeedbackSuccess: Story<any> = (args: InputPasswordProps) => (
-  <div className="p8">
+  <div className="p-8">
     <InputPassword {...args} id="input-password" feedbackText="Some success feedback" feedbackState="success" />
   </div>
 );
@@ -66,14 +66,14 @@ InputPasswordFeedbackDanger.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextCompHasError: Story<any> = (args: InputPasswordProps) => (
+export const InputTextCompHasReadOnly: Story<any> = (args: InputPasswordProps) => (
   <div className="p-8">
     <InputPassword {...args} id="input-password" />
   </div>
 );
-InputTextCompHasError.storyName = 'Input Password Error';
-InputTextCompHasError.args = {
-  hasError: true,
+InputTextCompHasReadOnly.storyName = 'Input Password Read Only';
+InputTextCompHasReadOnly.args = {
+  readOnly: true,
   label: 'Label',
   placeholder: 'Placeholder'
 };
@@ -90,14 +90,14 @@ InputTextCompDisabled.args = {
   placeholder: 'Placeholder'
 };
 
-export const InputTextCompHasReadOnly: Story<any> = (args: InputPasswordProps) => (
+export const InputTextCompHasError: Story<any> = (args: InputPasswordProps) => (
   <div className="p-8">
     <InputPassword {...args} id="input-password" />
   </div>
 );
-InputTextCompHasReadOnly.storyName = 'Input Password Read Only';
-InputTextCompHasReadOnly.args = {
-  readOnly: true,
+InputTextCompHasError.storyName = 'Input Password Error';
+InputTextCompHasError.args = {
+  hasError: true,
   label: 'Label',
   placeholder: 'Placeholder'
 };
