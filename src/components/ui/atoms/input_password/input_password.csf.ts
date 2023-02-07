@@ -128,16 +128,6 @@ export const argTypes = {
     description: 'Maximum chars allowed.',
     defaultValue: -1
   },
-  recoverPasswordText: {
-    type: { name: 'string', required: false },
-    description: 'Label to display in recover password link.',
-    defaultValue: ''
-  },
-  recoverPasswordSlug: {
-    type: { name: 'string', required: false },
-    description: 'Destination of Recover password form.',
-    defaultValue: ''
-  },
   isOptional: {
     type: { name: 'boolean', required: false },
     description: 'Decides if this field could be optional',
