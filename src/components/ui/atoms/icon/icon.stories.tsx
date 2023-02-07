@@ -13,7 +13,7 @@ export const Size: Story<IconProps> = ({ icon }: IconProps) => {
   return (
     <div className="bg-neutral-100">
       {dimensions.map((size) => (
-        <Icon className="p-1" key={size} size={size} icon={icon || 'agora-line-user'} ariaHidden />
+        <Icon className="p-1" key={size} size={size} icon={icon} ariaHidden />
       ))}
     </div>
   );
@@ -22,9 +22,10 @@ Size.storyName = 'Size';
 Size.argTypes = {
   icon: {
     description: 'Icon name or external image url',
+    defaultValue: 'no-icon',
     control: {
       type: 'select',
-      options: allIcons
+      options: ['no-icon', ...allIcons]
     }
   }
 };
