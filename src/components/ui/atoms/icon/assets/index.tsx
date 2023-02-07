@@ -227,7 +227,11 @@ export function isBundledIcon(name: string): boolean {
   return !!allIcons.find((i) => i === name);
 }
 
-export const loadIcon = (name: IconName) => {
+export const loadIcon = (name?: IconName | 'no-icon') => {
+  // if not icon load placeholder
+  if (!name || name === 'no-icon') {
+    return import(`./Other/agora`);
+  }
   if (isBundledIcon(name)) {
     return import(`${iconList[name]}`);
   }

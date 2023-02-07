@@ -52,7 +52,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
   /** Predefined icon dimensions. Possible values: 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' */
   size?: IconSize;
   /** Icon name to be used */
-  icon: string;
+  icon?: string;
   /** To use padding in icon container */
   padding?: boolean;
   /** Callback when image is loaded */
@@ -74,7 +74,8 @@ export const Icon: FC<IconProps> = ({ size = 'md', icon = '', alt, className, on
 
   useEffect(() => {
     let isMounted = true;
-    if (isBundledIcon(icon) && !iconsCache[icon]) {
+
+    if (!icon || icon === 'no-icon' || (isBundledIcon(icon) && !iconsCache[icon])) {
       loadIcon(icon)
         .then(({ component }) => {
           if (isMounted) {
@@ -103,7 +104,7 @@ export const Icon: FC<IconProps> = ({ size = 'md', icon = '', alt, className, on
     ariaHiddenProps['aria-hidden'] = ariaHidden;
   }
 
-  if (!isBundledIcon(icon)) {
+  if (icon && icon !== 'no-icon' && !isBundledIcon(icon)) {
     // Assume that it is a base64 image and let the browser do his work
     return <img src={icon} alt={alt} className={classes} {...ariaHiddenProps} />;
   }
