@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import { stringToBoolean } from '../../../utils';
 import { Icon } from '../icon';
@@ -67,16 +66,6 @@ export interface InputPasswordProps extends React.ComponentPropsWithRef<'input'>
    */
   togglePasswordAltIconText?: string;
   /**
-   * Text to display in the recover button link below input password
-   * @default null
-   */
-  recoverPasswordText: string;
-  /**
-   * Recover password destination form
-   * @default null
-   */
-  recoverPasswordSlug: string;
-  /**
    * Allow to show/hide the char counter on right button corner.
    * @default false
    */
@@ -97,8 +86,6 @@ export const InputPassword: React.FC<InputPasswordProps> = ({
   leadingIcon,
   initialValue = '',
   togglePasswordAltIconText = '',
-  recoverPasswordText = '',
-  recoverPasswordSlug,
   className = '',
   isOptional,
   id,
@@ -255,11 +242,6 @@ export const InputPassword: React.FC<InputPasswordProps> = ({
           </div>
         )}
       </div>
-      {recoverPasswordText && (
-        <Link href={recoverPasswordSlug} className="forgot-password-link">
-          {recoverPasswordText}
-        </Link>
-      )}
     </div>
   );
 };
