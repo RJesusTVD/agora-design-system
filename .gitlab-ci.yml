@@ -56,6 +56,10 @@ sonarqube-check:
       - $METADATA_PATH
       - $STORYBOOK_OUTPUT_PATH
   script:
+    - |
+      if [ $BUILD_FOR_STAGE = 'ux-review' ]; then
+        echo ./.storybook/theme-ux-review.js > ./.storybook/theme.js
+      fi
     - echo $BUILD_FOR_STAGE > $METADATA_PATH/environment.env
     - docker login -u $NEXUS_REGISTRY_USER -p $NEXUS_REGISTRY_PASSWORD $NEXUS_REGISTRY_DEPLOY_URL
     - docker build -f Dockerfile -t $NEXUS_REGISTRY_DEPLOY_URL/portal-unico/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/version.ver) .
