@@ -77,7 +77,7 @@ build-ux-review-storybook:
 build-dev-storybook:
   extends: .build-storybook
   variables:
-    BUILD_FOR_STAGE: 'develop'
+    BUILD_FOR_STAGE: 'dev'
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop"'
 
