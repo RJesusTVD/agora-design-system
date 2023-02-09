@@ -67,17 +67,17 @@ sonarqube-check:
         docker push ticapp/portal-unico-storybook-agora:$(cat $METADATA_PATH/environment.env)-$(cat $METADATA_PATH/version.ver)
       fi
 
+build-ux-review-storybook:
+  extends: .build-storybook
+  variables:
+    BUILD_FOR_STAGE: 'ux-review'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "ux-review"'
+
 build-dev-storybook:
   extends: .build-storybook
   variables:
-    BUILD_FOR_STAGE: 'dev'
-  rules:
-    - if: '$CI_COMMIT_BRANCH =~ "/^feature/"'
-
-build-qld-storybook:
-  extends: .build-storybook
-  variables:
-    BUILD_FOR_STAGE: 'qld'
+    BUILD_FOR_STAGE: 'develop'
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop"'
 
