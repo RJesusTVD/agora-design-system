@@ -58,7 +58,7 @@ sonarqube-check:
   script:
     - |
       if [ $BUILD_FOR_STAGE = 'ux-review' ]; then
-        echo ./.storybook/theme-ux-review.js > ./.storybook/theme.js
+        cat ./.storybook/theme-ux-review.js > ./.storybook/theme.js
       fi
     - echo $BUILD_FOR_STAGE > $METADATA_PATH/environment.env
     - docker login -u $NEXUS_REGISTRY_USER -p $NEXUS_REGISTRY_PASSWORD $NEXUS_REGISTRY_DEPLOY_URL
