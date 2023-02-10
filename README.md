@@ -266,3 +266,27 @@ module.exports =
 ;
 
 ```
+
+## Environments
+
+UX-Review - [https://dev-portal-unico.northeurope.cloudapp.azure.com:8180](https://dev-portal-unico.northeurope.cloudapp.azure.com:8180)
+
+Dev - [https://qld-portal-unico.northeurope.cloudapp.azure.com/](https://qld-portal-unico.northeurope.cloudapp.azure.com/)
+
+There are 2 main environments for this storybook design system project. UX-Review and Dev.
+
+### UX-Review
+
+This environment is used by devs and the UI-UX team to perform all the pre-validations required for any branch to be ready to assigned to a merge request.
+
+This environment reflects only the code present in the **ux-review** branch.
+
+**Devs** are responsible for setting up the desired code in the **ux-review** that is going to be reviewed. This environment must reflect the tasks that are ready for review by the UI-UX team.
+
+**Maintainers** are responsible for **deploying** the code when requested. This means that devs prepare the ux-review branch, then request the Maintainers for a deploy. Maintainers announce that the environment is ready for testing.
+
+### Dev
+
+Dev will reflect all code in develop branch.
+
+All merge requests approved will be merged to develop (reviewed, approved, merged), and then the Maintainers will do the deploy for the "dev environment".
