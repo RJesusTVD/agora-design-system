@@ -1,11 +1,7 @@
 {
-  "name": "@ama/agora-design-system",
+  "name": "@ama-pt/agora-design-system",
   "description": "Ágora Design system",
   "version": "0.1.0",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://ticappsonar.northeurope.cloudapp.azure.com/nexus/repository/npm-general"
-  },
   "main": "dist/cjs/components/index.js",
   "module": "dist/esm/components/index.js",
   "files": [
@@ -25,8 +21,7 @@
     "build:tailwind": "npx tailwindcss-cli build -i src/styles/globals.scss -o dist/css/index.css",
     "build:esm": "tsc",
     "build:cjs": "tsc --module CommonJS --outDir dist/cjs/components",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:tailwind --yes && npm run minify-css && npm run copy-assets && npm run copy-component-styles && npm run copy-global-styles",
-    "chromatic": "npx chromatic --project-token a29ac33e9134"
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:tailwind --yes && npm run minify-css && npm run copy-assets && npm run copy-component-styles && npm run copy-global-styles"
   },
   "dependencies": {
     "@babel/core": "^7.18.10",
@@ -66,7 +61,6 @@
     "@typescript-eslint/parser": "^5.44.0",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
-    "chromatic": "^6.15.0",
     "eslint": "8.28.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript-prettier": "^5.0.0",
@@ -116,7 +110,5 @@
   "author": {
     "name": "TicApp"
   },
-  "license": "MIT",
-  "readme": "ERROR: No README data found!",
-  "_id": "@ama/agora-design-system@0.1.0"
+  "license": "MIT"
 }
