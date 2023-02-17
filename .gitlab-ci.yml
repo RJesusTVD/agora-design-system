@@ -98,9 +98,7 @@ publish-library-npm-nexus:
   script:
     - npm install
     - npm run build
-    - echo "//registry.npmjs.org/:_authToken=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" > .npmrc
-    #- echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-    #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
+    - echo "//registry.npmjs.org/:_authToken=${NPM_JS_AMA_PT_TOKEN}" > .npmrc
     - npm publish --access public
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
