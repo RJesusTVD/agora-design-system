@@ -99,6 +99,7 @@ publish-library-npm-nexus:
     - npm install
     - npm run build
     - echo "//registry.npmjs.org/:_authToken=${NPM_JS_AMA_PT_TOKEN}" > .npmrc
+    - cat README.npm.md > README.md
     - npm publish --access public
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
