@@ -1,7 +1,7 @@
 {
   "name": "@ama-pt/agora-design-system",
   "description": "Ágora Design system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/cjs/components/index.js",
   "module": "dist/esm/components/index.js",
   "files": [
